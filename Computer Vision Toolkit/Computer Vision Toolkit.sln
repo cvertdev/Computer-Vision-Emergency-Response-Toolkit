@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Computer Vision Toolkit", "Computer Vision Toolkit\Computer Vision Toolkit.csproj", "{58D1E99E-3294-47A4-BE32-ECDBECDEA4BC}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{52CE5AB1-9788-47C1-9D48-13EF3133F9E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58D1E99E-3294-47A4-BE32-ECDBECDEA4BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D1E99E-3294-47A4-BE32-ECDBECDEA4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D1E99E-3294-47A4-BE32-ECDBECDEA4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D1E99E-3294-47A4-BE32-ECDBECDEA4BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52CE5AB1-9788-47C1-9D48-13EF3133F9E1}.Debug|Any CPU.ActiveCfg = Debug
+		{52CE5AB1-9788-47C1-9D48-13EF3133F9E1}.Release|Any CPU.ActiveCfg = Release
+		{52CE5AB1-9788-47C1-9D48-13EF3133F9E1}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F8C313E-446E-4864-9ADD-13E1B7FCDEC3}
+	EndGlobalSection
+EndGlobal
