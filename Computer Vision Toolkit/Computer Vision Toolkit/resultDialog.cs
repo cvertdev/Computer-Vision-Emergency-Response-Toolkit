@@ -94,7 +94,7 @@ namespace Computer_Vision_Toolkit
 
                 }
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -117,7 +117,7 @@ namespace Computer_Vision_Toolkit
                 }
                 this.Close();
             }
-            catch
+            catch (Exception err)
             {
 
             }

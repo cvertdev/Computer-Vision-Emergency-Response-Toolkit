@@ -158,7 +158,7 @@ namespace Computer_Vision_Toolkit
                 File.Create(currentBatch + @"\checkbox.ini").Close();
                 File.Create(currentBatch + @"\flagged.ini").Close();
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -209,7 +209,7 @@ namespace Computer_Vision_Toolkit
 
                 }
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -243,7 +243,7 @@ namespace Computer_Vision_Toolkit
                     Invoke(new LabelInfo(UpdateLabelInfo), "Files Selected: ", "Ready to analyze...");
 
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -291,7 +291,7 @@ namespace Computer_Vision_Toolkit
                     }
                 }
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -336,7 +336,7 @@ namespace Computer_Vision_Toolkit
                     }
                 }
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -388,7 +388,7 @@ namespace Computer_Vision_Toolkit
                     }
                 }
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -498,11 +498,10 @@ namespace Computer_Vision_Toolkit
                     }
 
                     //Update infoLog
-                    //infoLog.Text = infoLogStr;
                     infoLog.AppendText(status + "\r\n");
                 }
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -523,7 +522,7 @@ namespace Computer_Vision_Toolkit
                 {
                     Invoke(new Change(OnChange), line.Data, completed_files_ct, fileCt);
                 }
-                catch
+                catch (Exception err)
                 {
 
                 }
@@ -552,7 +551,7 @@ namespace Computer_Vision_Toolkit
                 if( backendProcess != null && !backendProcess.HasExited )
                     backendProcess.Kill();
             }
-            catch
+            catch (Exception err)
             {
 
             }

@@ -94,6 +94,7 @@
     <Compile Include="resultDialog.designer.cs">
       <DependentUpon>resultDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemLog.cs" />
     <EmbeddedResource Include="AlgorithmsForm.resx">
       <DependentUpon>AlgorithmsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +126,15 @@
       <DependentUpon>resultDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="lib\algorithms.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="lib\Logs\codes.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="lib\Logs\error.log">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="lib\Logs\status.log">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="lib\parameters.ini">
