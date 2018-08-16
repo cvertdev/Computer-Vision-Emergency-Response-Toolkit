@@ -74,6 +74,7 @@
             // 
             this.paramData.AllowUserToAddRows = false;
             this.paramData.AllowUserToDeleteRows = false;
+            this.paramData.AllowUserToResizeRows = false;
             this.paramData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -101,6 +102,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.paramData.DefaultCellStyle = dataGridViewCellStyle5;
             this.paramData.Location = new System.Drawing.Point(12, 12);
+            this.paramData.MultiSelect = false;
             this.paramData.Name = "paramData";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
