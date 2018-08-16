@@ -51,6 +51,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_66B283C62DFF4E5C93AC1063FD485870"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_758541C5BA0244F49D2A4D1E0C0BBDB2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,6 +99,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9B48B60360EC42AF9A2173B092611B96"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A67B6BA0A5084C5EBE82B0F12320BAC9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -124,6 +136,12 @@
         "Entry"
         {
         "MsmKey" = "8:_F16FE64B836343158BDFEB1DCA35FC5B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FDB46E766CEA4972946840B920625E4F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -365,6 +383,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_66B283C62DFF4E5C93AC1063FD485870"
+            {
+            "SourcePath" = "8:..\\Computer Vision Toolkit\\lib\\Logs\\status.log"
+            "TargetName" = "8:status.log"
+            "Tag" = "8:"
+            "Folder" = "8:_2081E57C81A04FFFAF9C8A8A83105E26"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_758541C5BA0244F49D2A4D1E0C0BBDB2"
             {
             "SourcePath" = "8:..\\Computer Vision Toolkit\\lib\\algorithms.ini"
@@ -471,6 +509,26 @@
             "TargetName" = "8:analyze.py"
             "Tag" = "8:"
             "Folder" = "8:_98C84A43FD2D4B2FA6D40FB3CD30A551"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B48B60360EC42AF9A2173B092611B96"
+            {
+            "SourcePath" = "8:..\\Computer Vision Toolkit\\lib\\Logs\\codes.ini"
+            "TargetName" = "8:codes.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_2081E57C81A04FFFAF9C8A8A83105E26"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -605,6 +663,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FDB46E766CEA4972946840B920625E4F"
+            {
+            "SourcePath" = "8:..\\Computer Vision Toolkit\\lib\\Logs\\error.log"
+            "TargetName" = "8:error.log"
+            "Tag" = "8:"
+            "Folder" = "8:_2081E57C81A04FFFAF9C8A8A83105E26"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -663,6 +741,17 @@
                     "Property" = "8:_5299CAAFD4A44649972F712DE735F529"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_2081E57C81A04FFFAF9C8A8A83105E26"
+                            {
+                            "Name" = "8:Logs"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_6E5AD765636E4B8CB72ABAB367E0A161"
+                                "Folders"
+                                {
+                                }
+                            }
                             "{9EF0B969-E518-4E46-987F-47570745A589}:_78AF5A181B70499CB367390FBB95850F"
                             {
                             "Name" = "8:Assets"

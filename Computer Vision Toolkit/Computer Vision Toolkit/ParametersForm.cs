@@ -87,7 +87,7 @@ namespace Computer_Vision_Toolkit
                     paramData.Rows.Add( opt[0], Convert.ToInt32(opt[1]), Convert.ToDouble(opt[2]), Convert.ToDouble(opt[3]));
                 }
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -116,7 +116,7 @@ namespace Computer_Vision_Toolkit
                 saved_changes = true;
                 saveStatus.Text = "Saved...";
             }
-            catch
+            catch (Exception err)
             {
 
             }

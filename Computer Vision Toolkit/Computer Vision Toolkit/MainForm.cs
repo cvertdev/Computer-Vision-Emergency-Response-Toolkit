@@ -72,13 +72,6 @@ namespace Computer_Vision_Toolkit
 
     }
 
-    //Global Parameters
-    public struct Parameters
-    {
-
-    }
-
-
 
     public partial class MainForm : Form
     {
@@ -98,10 +91,9 @@ namespace Computer_Vision_Toolkit
         public Process proc_img1;
         public Process proc_img2;
 
-        //Zoom ROI
+        //Mouse location
         int mouse_x;
         int mouse_y;
-
 
         //===================================================================================================================
         //-------------------------------------------------------------------------------------------------------------------
@@ -203,10 +195,9 @@ namespace Computer_Vision_Toolkit
                                 break;
                             }
                     }
-
                 }
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -232,7 +223,7 @@ namespace Computer_Vision_Toolkit
                     "AllowMultiThread=" + settings.AllowMultiThread
                     });
             }
-            catch
+            catch (Exception err)
             {
                 
             }
@@ -252,7 +243,7 @@ namespace Computer_Vision_Toolkit
                 str = File.ReadAllLines(batch + @"\checkbox.ini").ToList<string>();
                 return str;
             }
-            catch
+            catch (Exception err)
             {
                 return str;
             }
@@ -273,7 +264,7 @@ namespace Computer_Vision_Toolkit
 
                 File.WriteAllLines(batch + @"\checkbox.ini", str);
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -296,7 +287,7 @@ namespace Computer_Vision_Toolkit
                 str = File.ReadAllLines(batch + @"\flagged.ini").ToList<string>();
                 return str;
             }
-            catch
+            catch (Exception err)
             {
                 return str;
             }
@@ -316,7 +307,7 @@ namespace Computer_Vision_Toolkit
                 if(!File.Exists(batch + @"\flagged.ini")) File.Create(batch + @"\flagged.ini").Close();
                 File.WriteAllLines(batch + @"\flagged.ini", str);
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -343,7 +334,7 @@ namespace Computer_Vision_Toolkit
                     default: return Color.White;
                 }
             }
-            catch
+            catch (Exception err)
             {
                 return Color.White;
             }
@@ -363,7 +354,7 @@ namespace Computer_Vision_Toolkit
                 str = File.ReadAllLines(batch + @"\detected_log.txt").ToList<string>();
                 return str;
             }
-            catch
+            catch (Exception err)
             {
                 return str;
             }
@@ -400,7 +391,7 @@ namespace Computer_Vision_Toolkit
            
                 UpdateSettings();
             }
-            catch
+            catch (Exception err)
             {
                 
             }
@@ -465,7 +456,7 @@ namespace Computer_Vision_Toolkit
                         }
                 }
             }
-            catch
+            catch (Exception err)
             {
                 
             }
@@ -527,7 +518,7 @@ namespace Computer_Vision_Toolkit
                 
                 }
             }
-            catch
+            catch (Exception err)
             {
                 
             }
@@ -644,7 +635,7 @@ namespace Computer_Vision_Toolkit
                     }
                 }
             }
-            catch
+            catch (Exception err)
             {
                 
             }
@@ -692,7 +683,7 @@ namespace Computer_Vision_Toolkit
                 
                 dataGridView1.Update();
             }
-            catch
+            catch (Exception err)
             {
                 
             }
@@ -809,7 +800,7 @@ namespace Computer_Vision_Toolkit
                 }
 
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -848,7 +839,7 @@ namespace Computer_Vision_Toolkit
                 }
 
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -869,7 +860,7 @@ namespace Computer_Vision_Toolkit
                 }
 
             }
-            catch
+            catch (Exception err)
             {
 
             }

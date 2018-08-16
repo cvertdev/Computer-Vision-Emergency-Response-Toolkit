@@ -77,7 +77,7 @@ namespace Computer_Vision_Toolkit
                 worker.DoWork += new DoWorkEventHandler(checkForPython);
                 worker.RunWorkerAsync(this);
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -188,7 +188,7 @@ namespace Computer_Vision_Toolkit
                 Invoke(new Bool(SetEnabled), true);
                 Invoke(new Bool(SetWaitCursor), false);
             }
-            catch
+            catch (Exception err)
             {
 
             }
@@ -201,9 +201,9 @@ namespace Computer_Vision_Toolkit
                 pythonLink.LinkVisited = true; 
                 System.Diagnostics.Process.Start("https://www.python.org/downloads/release/python-364/");
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(err.Message);
             }
         }
 
