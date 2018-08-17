@@ -908,50 +908,73 @@ namespace Computer_Vision_Toolkit
         //----------------------------------------------Mouse Click Handler--------------------------------------------------
         //===================================================================================================================
 
-        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             try
             {
                 if (e.Button == MouseButtons.Left && e.Clicks == 1)
                 {
-                    int size = 120;
+                    int size = 90;
                     int offset = size / 2;
+                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                    int height_offset = (pictureBox1.Height - expected_height) / 2;
+
                     Color centerColor = Color.FromArgb(0, 0, 0, 0);
                     Color[] colors = { Color.FromArgb(255, 0, 0, 0) };
 
                     Graphics g1 = pictureBox1.CreateGraphics();
                     Graphics g2 = pictureBox2.CreateGraphics();
 
-                    Rectangle rec = new Rectangle(mouse_x - offset, mouse_y - offset, size, size);
-
-
-                    // Create a path that consists of a single ellipse.
                     GraphicsPath path = new GraphicsPath();
-                    //path.AddRectangle(rec);
                     path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-                   
-                    // Use the path to construct a brush.
-                    PathGradientBrush pthGrBrush = new PathGradientBrush(path);
 
-                    // Set the color at the center of the path to blue.
-                    pthGrBrush.CenterColor = centerColor;
+                    Region reg = new Region(path);
+                    g2.SetClip(reg, CombineMode.Exclude);
 
-                    // Set the color along the entire boundary 
-                    pthGrBrush.SurroundColors = colors;
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0));
 
-                    //g1.FillRectangle(pthRecBrush, rec);
-                    //g2.FillRectangle(pthRecBrush, rec);
+                    g2.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                    g1.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
 
-                    Bitmap mask = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                    Bitmap bmp = new Bitmap(pictureBox1.Image);
+                }
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
+        }
 
-                    g1.DrawImageUnscaledAndClipped(bmp, rec);
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Left && e.Clicks == 1)
+                {
+                    int size = 90;
+                    int offset = size / 2;
+                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                    int height_offset = (pictureBox1.Height - expected_height) / 2;
 
+                    Color centerColor = Color.FromArgb(0, 0, 0, 0);
+                    Color[] colors = { Color.FromArgb(255, 0, 0, 0) };
 
+                    Graphics g1 = pictureBox1.CreateGraphics();
+                    Graphics g2 = pictureBox2.CreateGraphics();
 
-                    //g1.FillEllipse(pthGrBrush, mouse_x - offset, mouse_y - offset, size, size);
-                    //g2.FillEllipse(pthGrBrush, mouse_x - offset, mouse_y - offset, size, size);
-                    
+                    GraphicsPath path = new GraphicsPath();
+                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+
+                    Region reg = new Region(path);
+                    g1.SetClip(reg, CombineMode.Exclude);
+
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0));
+
+                    g1.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                    g2.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
+
                 }
             }
             catch (Exception err)
