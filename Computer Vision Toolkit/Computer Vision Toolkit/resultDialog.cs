@@ -49,11 +49,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemLog;
 
 namespace Computer_Vision_Toolkit
 {
     public partial class resultDialog : Form
     {
+        //Logging System
+        public ErrorLog elog = new ErrorLog();
+        public StatusLog slog = new StatusLog();
+
         public string Selection;
         private Settings settings;
 
@@ -96,7 +101,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
 
         }
@@ -119,7 +125,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 

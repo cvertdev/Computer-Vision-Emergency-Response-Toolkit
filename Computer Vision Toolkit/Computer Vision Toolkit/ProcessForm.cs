@@ -52,6 +52,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using SystemLog;
 
 namespace Computer_Vision_Toolkit
 {
@@ -59,6 +60,10 @@ namespace Computer_Vision_Toolkit
 
     public partial class ProcessForm : Form
     {
+        //Logging System
+        public ErrorLog elog = new ErrorLog();
+        public StatusLog slog = new StatusLog();
+
         private string batchName;
         private string[] selectedFileNames;
         private string workingDirectory;
@@ -108,33 +113,44 @@ namespace Computer_Vision_Toolkit
         //Computes the next default batch name
         private string getNextBatchName()
         {
-            string[] batch_paths = Directory.GetDirectories(batchesDirectory);
-            int ct = 0;
-
-            //Finds the latest default batch name
-            foreach (string str_path in batch_paths)
+            try
             {
-                string str = str_path.Split('\\').Last<string>();
 
-                if (str.StartsWith("Batch_") && !str.EndsWith(")"))
+                string[] batch_paths = Directory.GetDirectories(batchesDirectory);
+                int ct = 0;
+
+                //Finds the latest default batch name
+                foreach (string str_path in batch_paths)
                 {
-                    //Try to extract the number after Batch_
-                    try
+                    string str = str_path.Split('\\').Last<string>();
+
+                    if (str.StartsWith("Batch_") && !str.EndsWith(")"))
                     {
-                        if (ct < Convert.ToInt32(str.Split('_')[1]))
+                        //Try to extract the number after Batch_
+                        try
                         {
-                            ct = Convert.ToInt32(str.Split('_')[1]);
+                            if (ct < Convert.ToInt32(str.Split('_')[1]))
+                            {
+                                ct = Convert.ToInt32(str.Split('_')[1]);
+                            }
+                        }
+                        catch (FormatException e)    //Throws an exception if the string after Batch_ can not be converted into a number
+                        {
+                            //Skip this folder name, as it is not a default name provided
                         }
                     }
-                    catch(FormatException e)    //Throws an exception if the string after Batch_ can not be converted into a number
-                    {
-                        //Skip this folder name, as it is not a default name provided
-                    }
                 }
-            }
-            ct++;   //Increment default name by 1
+                ct++;   //Increment default name by 1
 
-            return "Batch_" + ct.ToString();
+                return "Batch_" + ct.ToString();
+            }
+
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+                return "Error_Batch";
+            }
         }
 
         //===================================================================================================================
@@ -160,7 +176,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -211,7 +228,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -245,7 +263,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -293,7 +312,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -338,7 +358,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -390,9 +411,10 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
-            
+
         }
 
         //===================================================================================================================
@@ -503,9 +525,10 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
-           
+
         }
 
         //===================================================================================================================
@@ -524,7 +547,8 @@ namespace Computer_Vision_Toolkit
                 }
                 catch (Exception err)
                 {
-
+                    elog.Log(err.TargetSite.ToString(), err.Message);
+                    //MessageBox.Show(err.Message);
                 }
             }
         }
@@ -553,7 +577,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
