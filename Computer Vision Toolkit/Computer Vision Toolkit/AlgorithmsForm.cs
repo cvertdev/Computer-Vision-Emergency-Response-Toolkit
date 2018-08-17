@@ -79,7 +79,6 @@ namespace Computer_Vision_Toolkit
         {
             try
             {
-
                 string[] entries = File.ReadAllLines(@"lib\algorithms.ini");
                 foreach (string str in entries)
                 {
@@ -89,8 +88,8 @@ namespace Computer_Vision_Toolkit
                     //Remove any remaining comment sections
                     string p_str = str.Split('#')[0];
 
-                    string[] opt = p_str.Split('=');      //name=default=value
-                    paramData.Rows.Add(opt[0], Convert.ToInt32(opt[1]), Convert.ToInt32(opt[2]));
+                    string[] opt = p_str.Split('=');      //name=pipe=use=order
+                    paramData.Rows.Add(opt[0], Convert.ToInt32(opt[1]), Convert.ToInt32(opt[2]), Convert.ToInt32(opt[3]));
                 }
             }
             catch (Exception err)
@@ -106,14 +105,13 @@ namespace Computer_Vision_Toolkit
         {
             try
             {
-
                 paramList.Clear();
                 if (paramData.Rows.Count > 0)
                 {
                     //Create array of strings
                     foreach (DataGridViewRow row in paramData.Rows)
                     {
-                        paramList.Add(row.Cells[0].Value + "=" + Convert.ToInt32(row.Cells[1].Value).ToString() + "=" + Convert.ToInt32(row.Cells[2].Value).ToString());
+                        paramList.Add(row.Cells[0].Value + "=" + Convert.ToInt32(row.Cells[1].Value).ToString() + "=" + Convert.ToInt32(row.Cells[2].Value).ToString() + "=" + Convert.ToInt32(row.Cells[3].Value).ToString());
                     }
 
                     //Write string array to file

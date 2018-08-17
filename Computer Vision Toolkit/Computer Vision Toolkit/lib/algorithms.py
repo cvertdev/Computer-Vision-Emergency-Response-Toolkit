@@ -46,17 +46,22 @@ Params = {
 
 #List of aglorithm functions
 Alg_List = { 
-    'RXD':RXD, 
+    'RXD':RXD,
     'DebrisDetect':DebrisDetect
     
     }
 
-Alg_Selected = {
-	'RXD':1, 
+Alg_Order = {
+	'RXD':1,
     'DebrisDetect':2
    
 	}
 
+Alg_Pipe = {
+    'RXD':0,
+    'DebrisDetect':0
+   
+    }
 
 
 
@@ -88,7 +93,6 @@ for line in paramFile:
 
 #Get algorithms.ini file
 algFile = open(os.path.join( os.path.dirname(sys.argv[0]), "algorithms.ini"), "r")
-print('read the alg file\n')
 #Add code to read in the parameters from the file Here to overwrite the defaults
 for line in algFile:
 	if line[0] == '#':
@@ -98,12 +102,13 @@ for line in algFile:
 		splitLine=line.strip().split("=")
 
         #see if the algorithm is in our dictionary
-        #splitline[1] determines if th algorithm will be used during analysis. 1 for use, 0 for not use
-		if splitLine[0] in Alg_Selected:
-			if int(splitLine[1]) is 1:
-				Alg_Selected[splitLine[0]] = int(splitLine[2])
+        #splitline[2] determines if th algorithm will be used during analysis. 1 for use, 0 for not use
+		if splitLine[0] in Alg_Order:
+			if int(splitLine[2]) is 1:
+				Alg_Order[splitLine[0]] = int(splitLine[3])
+				Alg_Pipe[splitLine[0]] = int(splitLine[1])
 			else:
-				Alg_Selected[splitLine[0]] = -1		#Set the order to -1. This means that the algorithm will not be used in the analysis.
+				Alg_Order[splitLine[0]] = -1		#Set the order to -1. This means that the algorithm will not be used in the analysis.
 
 
 #========================================================================================================
@@ -132,25 +137,29 @@ def algorithms(image_path, apply_heatmap=True, range_min=0, range_max=255, scale
 	#--------------------------------------------------------------------------------------------------------
 
 	#Sort the algorithms to use by the order saved by the user. This is stored in the 'algorithms.ini' file
-	alg_sorted = sorted(Alg_Selected.items(), key=lambda kv: kv[1], reverse=False)
+	alg_sorted = sorted(Alg_Order.items(), key=lambda kv: kv[1], reverse=False)
 
     #Run the algorithms
     #for alg in Alg_List.items():
 	for alg in alg_sorted:
 		
 		if alg[0] in Alg_List and alg[1] != -1:
-			#Get the function from Alg_List and run it
-			rtn = Alg_List[alg[0]](image, Params)
+			if alg[0] in Alg_Pipe and Alg_Pipe[alg[0]] == 1:
+				rtn = Alg_List[alg[0]](image, Params)
 
-			#Apply any special conversions
-			#if alg[0] == 'RXD':
-			#    scores += np.interp(rtn[0], [np.min(rtn[0]),np.max(rtn[0])], [range_min, range_max])
-			#else:
-			#    scores += rtn[0]
+				#Convert a 2D matrix of scores into a grayscale 3 channel image
+				if len(rtn[0].shape) < 3:
+					image = cv.applyColorMap( rtn[0].astype(np.uint8), cv.COLORMAP_BONE )
+				else:
+					image = rtn[0]
+
+			else:
+				#Get the function from Alg_List and run it
+				rtn = Alg_List[alg[0]](image, Params)
 
 			#Add the current algorithm's results to the overall results
 			scores += rtn[0]
-        
+			
 			#Add the current algorithm's completion time and statistics
 			time += rtn[1]
 			stats += rtn[2]

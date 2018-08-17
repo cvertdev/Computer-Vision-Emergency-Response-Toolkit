@@ -84,7 +84,6 @@ namespace Computer_Vision_Toolkit
             try
             {
 
-                //String Path = System.IO.Path.Combine(Environment.CurrentDirectory, "Batches");
                 string Path = settings.BatchesPath;
                 string[] directories = System.IO.Directory.GetDirectories(Path);
 
@@ -93,10 +92,7 @@ namespace Computer_Vision_Toolkit
                     int num_checked = System.IO.File.ReadAllLines(directories[i] + @"\checkbox.ini").Count<string>();
                     int num_total = System.IO.Directory.GetFiles(directories[i] + @"\Detected").Count<string>();
 
-                    //listBox1.Items.Add( num_checked.ToString() + "/" + num_total.ToString() + "\t" + System.IO.Path.GetFileName(directories[i]));
-
                     dataGridView1.Rows.Add( System.IO.Path.GetFileName(directories[i]), num_checked, num_total );
-
                 }
             }
             catch (Exception err)
@@ -104,7 +100,6 @@ namespace Computer_Vision_Toolkit
                 elog.Log(err.TargetSite.ToString(), err.Message);
                 //MessageBox.Show(err.Message);
             }
-
         }
 
         //===================================================================================================================
@@ -115,7 +110,6 @@ namespace Computer_Vision_Toolkit
         {
             try
             {
-
                 if(dataGridView1.SelectedRows.Count > 0)
                 {
                     string temp = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
@@ -137,8 +131,6 @@ namespace Computer_Vision_Toolkit
         public string getSelected()
         {
             return Selection;
-        }
-
-       
+        } 
     }
 }

@@ -1,4 +1,3 @@
-#   Missing Person Detection Tool
 #
 #
 # References:
@@ -40,14 +39,6 @@ def RXD( image_file, Params):
 	else:
 		src_img = image_file
 
-	#Extract the name of the original image from its path
-	#result_name = ".".join(os.path.split(image_file)[1].split(".")[:-1])
-
-	#If needed, scale image
-	if scale_value != 1.0:
-		height, width = src_img.shape[:2]
-		src_img = cv.resize( src_img, (int( width * scale_value ), int( height * scale_value)), interpolation= cv.INTER_LINEAR)
-
 	#Calculate the rx scores for the image
 	rx_scores = spc.rx(src_img)
 
@@ -63,16 +54,9 @@ def RXD( image_file, Params):
 	#Percentage of anomalies above the annomaly_threshold
 	stats = ((rx_mask >= anomaly_threshold).sum() / rx_mask.size ) * 100.0
 
-	#Flag the image as a Detected (D) or Other (O)
-	#if np.max(rx_mask) >= anomaly_threshold:
-	#    flag = 'D'
-	#else:
-	#    flag = 'O'
-
-
 	#Map the reuslting scores into a 0-255 range. This is required to get apply an accurate heatmap. Otherwise, values may overflow and the cooresponding color value will be wrong.
 	rx_mask = np.interp(rx_mask, [np.min(rx_mask), np.max(rx_mask)], [0, 255])
 
 	t.stop()
 
-	return rx_mask, t.get_time(), stats #, flag
+	return rx_mask, t.get_time(), stats
