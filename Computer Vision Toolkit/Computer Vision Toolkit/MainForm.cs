@@ -55,6 +55,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using SystemLog;
+
 
 namespace Computer_Vision_Toolkit
 {
@@ -75,6 +77,10 @@ namespace Computer_Vision_Toolkit
 
     public partial class MainForm : Form
     {
+        //Logging System
+        public ErrorLog elog = new ErrorLog();
+        public StatusLog slog = new StatusLog();
+
         //Settings
         public Settings settings = new Settings();     //Values read from the 'settings.ini'
         public string settingsPath = @"settings.ini";
@@ -110,11 +116,11 @@ namespace Computer_Vision_Toolkit
 
             //Update settings.ini
             UpdateSettings();
-
+            
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------Read Settings File-------------------------------------------------
         //===================================================================================================================
 
         private void ReadSettings()
@@ -199,7 +205,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -225,9 +232,10 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-                
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
-            
+
         }
 
         //===================================================================================================================
@@ -245,6 +253,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
                 return str;
             }
             
@@ -266,7 +276,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -289,6 +300,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
                 return str;
             }
 
@@ -309,7 +322,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -336,6 +350,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
                 return Color.White;
             }
         }
@@ -356,6 +372,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
                 return str;
             }
 
@@ -393,13 +411,14 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-                
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
-           
+
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //---------------------------------------------------Display Images--------------------------------------------------
         //===================================================================================================================
 
         private void displayImages(bool use_window)
@@ -458,13 +477,14 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-                
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
 
         }
 
         //===================================================================================================================
-        //-------------------------------------------------Analysis Btn Click------------------------------------------------
+        //-------------------------------------------------Analysis Button Click---------------------------------------------
         //===================================================================================================================
 
         private void menuBtnNewAnalysis_Click(object sender, EventArgs e)
@@ -474,14 +494,15 @@ namespace Computer_Vision_Toolkit
                 ProcessForm proc_form = new ProcessForm(settings);
                 proc_form.Show();
             }
-            catch
+            catch (Exception err)
             {
-                
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
         //===================================================================================================================
-        //-------------------------------------------------Results Btn Click-------------------------------------------------
+        //-------------------------------------------------Results Button Click----------------------------------------------
         //===================================================================================================================
 
         private void menuBtnSelectResults_Click(object sender, EventArgs e)
@@ -520,12 +541,13 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-                
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------Watcher File Changed------------------------------------------------
         //===================================================================================================================
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
@@ -535,7 +557,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------Watcher File Created------------------------------------------------
         //===================================================================================================================
 
         private void Watcher_Created(object sender, FileSystemEventArgs e)
@@ -571,7 +593,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //---------------------------------------------------Load Images-----------------------------------------------------
+        //---------------------------------------------Load Images from Folder-----------------------------------------------
         //===================================================================================================================
 
         private void loadImages()
@@ -637,12 +659,13 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-                
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------Update Image List---------------------------------------------------
         //===================================================================================================================
 
         private void updateImages()
@@ -685,17 +708,13 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-                
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
-
+        
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
-        //===================================================================================================================
-
-
-        //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //---------------------------------------------Edit Parameters Clicked-----------------------------------------------
         //===================================================================================================================
 
         private void editParametersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -705,7 +724,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------View Optimization Clicked----------------------------------------------
         //===================================================================================================================
 
         private void viewingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -716,7 +735,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------Analysis Optimization Clicked---------------------------------------------
         //===================================================================================================================
 
         private void analysisToolStripMenuItem_Click(object sender, EventArgs e)
@@ -727,7 +746,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //---------------------------------------Open Image in New Window Clicked--------------------------------------------
         //===================================================================================================================
 
         private void openImagesInNewWindowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -737,7 +756,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------Image Double Clicked-------------------------------------------------
         //===================================================================================================================
 
         private void pictureBox_DoubleClick(object sender, EventArgs e)
@@ -747,7 +766,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------Image Single Clicked-------------------------------------------------
         //===================================================================================================================
 
         private void pictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -761,7 +780,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------Mark Image as Viewed-------------------------------------------------
         //===================================================================================================================
 
         private void btnMarkAsViewed_Click(object sender, EventArgs e)
@@ -802,13 +821,14 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
-            
+
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------Mark Image as Flagged------------------------------------------------
         //===================================================================================================================
 
         private void MarkAsFlagged()
@@ -841,13 +861,14 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
 
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------Down Arrow Pressed-------------------------------------------------
         //===================================================================================================================
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
@@ -862,12 +883,13 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------Mouse Move Handler--------------------------------------------------
         //===================================================================================================================
 
         //Mouse moved over pictureBox2
@@ -883,41 +905,87 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------Mouse Click Handler--------------------------------------------------
         //===================================================================================================================
 
-        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && e.Clicks == 1)
+            try
             {
-                int size = 60;
-                int offset = size / 2;
-                Color centerColor = Color.FromArgb(255, 255, 0, 0);
-                Color[] colors = { Color.FromArgb(10, 255, 0, 0) };
+                if (e.Button == MouseButtons.Left && e.Clicks == 1)
+                {
+                    int size = 90;
+                    int offset = size / 2;
+                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                    int height_offset = (pictureBox1.Height - expected_height) / 2;
 
-                Graphics g1 = pictureBox1.CreateGraphics();
-                Graphics g2 = pictureBox2.CreateGraphics();
+                    Color centerColor = Color.FromArgb(0, 0, 0, 0);
+                    Color[] colors = { Color.FromArgb(255, 0, 0, 0) };
 
-                // Create a path that consists of a single ellipse.
-                GraphicsPath path = new GraphicsPath();
-                path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+                    Graphics g1 = pictureBox1.CreateGraphics();
+                    Graphics g2 = pictureBox2.CreateGraphics();
 
-                // Use the path to construct a brush.
-                PathGradientBrush pthGrBrush = new PathGradientBrush(path);
+                    GraphicsPath path = new GraphicsPath();
+                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
 
-                // Set the color at the center of the path to blue.
-                pthGrBrush.CenterColor = centerColor;
-                
-                // Set the color along the entire boundary 
-                pthGrBrush.SurroundColors = colors;
+                    Region reg = new Region(path);
+                    g2.SetClip(reg, CombineMode.Exclude);
 
-                g1.FillEllipse(pthGrBrush, mouse_x - offset, mouse_y - offset, size, size);
-                g2.FillEllipse(pthGrBrush, mouse_x - offset, mouse_y - offset, size, size);
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0));
+
+                    g2.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                    g1.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
+
+                }
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
+        }
+
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Left && e.Clicks == 1)
+                {
+                    int size = 90;
+                    int offset = size / 2;
+                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                    int height_offset = (pictureBox1.Height - expected_height) / 2;
+
+                    Color centerColor = Color.FromArgb(0, 0, 0, 0);
+                    Color[] colors = { Color.FromArgb(255, 0, 0, 0) };
+
+                    Graphics g1 = pictureBox1.CreateGraphics();
+                    Graphics g2 = pictureBox2.CreateGraphics();
+
+                    GraphicsPath path = new GraphicsPath();
+                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+
+                    Region reg = new Region(path);
+                    g1.SetClip(reg, CombineMode.Exclude);
+
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0));
+
+                    g1.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                    g2.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
+
+                }
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------Mouse Click Handler--------------------------------------------------
         //===================================================================================================================
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
@@ -928,7 +996,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------Select Algorithms Clicked-----------------------------------------------
         //===================================================================================================================
 
         private void selectAlgorithmsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -938,7 +1006,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------------Image Flagged-----------------------------------------------------
         //===================================================================================================================
 
         private void FlagComboBox_SelectionChangeCommitted(object sender, EventArgs e)
@@ -950,28 +1018,36 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //-------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------Clear Flag-------------------------------------------------------
         //===================================================================================================================
 
         private void btnClearFlag_Click(object sender, EventArgs e)
         {
-            if (flagged_images.Any<string>((string x) => x.Split('=')[0].Contains(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString())))
+            try
             {
-                flagged_images.Remove(flagged_images.Find((string x) => x.Contains(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString())));    //Remove the old value
+                if (flagged_images.Any<string>((string x) => x.Split('=')[0].Contains(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString())))
+                {
+                    flagged_images.Remove(flagged_images.Find((string x) => x.Contains(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString())));    //Remove the old value
+                }
+
+                //Update dataGridView
+                dataGridView1.SelectedRows[0].Cells["Flag"].Value = "";
+                dataGridView1.SelectedRows[0].Cells["Flag"].Style.ForeColor = Color.White;
+                dataGridView1.SelectedRows[0].Cells["Flag"].Style.BackColor = Color.White;
+                dataGridView1.SelectedRows[0].Cells["Flag"].Style.SelectionBackColor = Color.FromKnownColor(KnownColor.Highlight);
+                dataGridView1.SelectedRows[0].Cells["Flag"].Style.SelectionForeColor = Color.FromKnownColor(KnownColor.Highlight);
+
+                //Update the checkbox.ini
+                UpdateFlagged(selectResultsFolder, flagged_images.ToArray());
+
+                dataGridView1.Update();
+                dataGridView1.Focus();
             }
-
-            //Update dataGridView
-            dataGridView1.SelectedRows[0].Cells["Flag"].Value = "";
-            dataGridView1.SelectedRows[0].Cells["Flag"].Style.ForeColor = Color.White;
-            dataGridView1.SelectedRows[0].Cells["Flag"].Style.BackColor = Color.White;
-            dataGridView1.SelectedRows[0].Cells["Flag"].Style.SelectionBackColor = Color.FromKnownColor(KnownColor.Highlight);
-            dataGridView1.SelectedRows[0].Cells["Flag"].Style.SelectionForeColor = Color.FromKnownColor(KnownColor.Highlight);
-
-            //Update the checkbox.ini
-            UpdateFlagged(selectResultsFolder, flagged_images.ToArray());
-
-            dataGridView1.Update();
-            dataGridView1.Focus();
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================

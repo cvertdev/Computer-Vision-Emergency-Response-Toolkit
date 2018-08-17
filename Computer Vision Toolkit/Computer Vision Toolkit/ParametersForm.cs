@@ -50,11 +50,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemLog;
 
 namespace Computer_Vision_Toolkit
 {
     public partial class ParametersForm : Form
     {
+        //Logging System
+        public ErrorLog elog = new ErrorLog();
+        public StatusLog slog = new StatusLog();
+
         public List<string> paramList = new List<string>();
         public bool saved_changes = true;
 
@@ -89,7 +94,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
 
         }
@@ -118,7 +124,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
 
         }

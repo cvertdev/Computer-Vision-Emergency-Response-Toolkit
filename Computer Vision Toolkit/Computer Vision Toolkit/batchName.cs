@@ -49,11 +49,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemLog;
 
 namespace Computer_Vision_Toolkit
 {
     public partial class batchName : Form
     {
+        //Logging System
+        public ErrorLog elog = new ErrorLog();
+        public StatusLog slog = new StatusLog();
+
         private string batch_name;
         private string invalid_msg = "Invalid character";
         private string valid_msg = "Please name this batch";

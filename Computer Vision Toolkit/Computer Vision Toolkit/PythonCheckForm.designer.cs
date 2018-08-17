@@ -39,9 +39,9 @@
             this.infoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.infoLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.infoLabel.Location = new System.Drawing.Point(12, 22);
+            this.infoLabel.Location = new System.Drawing.Point(12, 9);
             this.infoLabel.Name = "infoLabel";
-            this.infoLabel.Size = new System.Drawing.Size(325, 22);
+            this.infoLabel.Size = new System.Drawing.Size(325, 59);
             this.infoLabel.TabIndex = 0;
             this.infoLabel.Text = "Please wait while we search for python...";
             this.infoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

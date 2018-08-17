@@ -53,10 +53,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using SystemLog;
+
 namespace Computer_Vision_Toolkit
 {
     public partial class PythonCheckForm : Form
     {
+        //Logging System
+        public ErrorLog elog = new ErrorLog();
+        public StatusLog slog = new StatusLog();
+
         private Settings settings;
         private bool is_python_installed = false;
         private string[] default_python_path = { "%windir%\\py.exe", "%LocalAppData%\\Programs\\Python\\Python36\\python.exe", "%LocalAppData%\\Programs\\Python\\Python36-32\\python.exe", "%ProgramFiles%\\Python 3.6\\python.exe", "%ProgramFiles(x86)%\\Python 3.6\\python.exe" };
@@ -71,7 +77,6 @@ namespace Computer_Vision_Toolkit
         {
             try
             {
-
                 //Create a background thread for the progress bar 
                 BackgroundWorker worker = new BackgroundWorker();
                 worker.DoWork += new DoWorkEventHandler(checkForPython);
@@ -79,7 +84,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -104,7 +110,6 @@ namespace Computer_Vision_Toolkit
         {
            try
             {
-
                 //Check for Python
                 if (string.IsNullOrEmpty(settings.PythonPath) || !File.Exists(settings.PythonPath))
                 {
@@ -166,7 +171,7 @@ namespace Computer_Vision_Toolkit
                             }
                         }
 
-                        Invoke(new Info(UpdateInfo), "Python Setup Complete...");
+                        Invoke(new Info(UpdateInfo), "Python Setup Complete...\nYou may now close this window.");
                         settings.FirstRun = false;
                         is_python_installed = true;
                     }
@@ -174,12 +179,11 @@ namespace Computer_Vision_Toolkit
                     {
                         Invoke(new Info(UpdateInfo), "Python 3.6.4 or greater is required to analyze images.");
                         is_python_installed = false;
-                    
                     }      
                 }
                 else
                 {
-                    Invoke(new Info(UpdateInfo), "Finished...");
+                    Invoke(new Info(UpdateInfo), "Finished...\nYou may now close this window.");
                     Invoke(new Bool(SetWaitCursor), false);
                     is_python_installed = true;
                 }
@@ -190,7 +194,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -203,7 +208,8 @@ namespace Computer_Vision_Toolkit
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message);
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
