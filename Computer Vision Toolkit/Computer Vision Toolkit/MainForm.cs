@@ -399,11 +399,13 @@ namespace Computer_Vision_Toolkit
                 if (py.DialogResult == DialogResult.No)
                 {
                     menuBtnNewAnalysis.Enabled = false;
+                    btnNewAnalysis.Enabled = false;
                     settings.FirstRun = true;
                 }
                 else
                 {
                     menuBtnNewAnalysis.Enabled = true;
+                    btnNewAnalysis.Enabled = true;
                     settings.FirstRun = false;
                 }
            

@@ -95,7 +95,7 @@
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip.Size = new System.Drawing.Size(1503, 26);
+            this.menuStrip.Size = new System.Drawing.Size(1809, 26);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "Menu";
             // 
@@ -205,7 +205,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(1, 5);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(1, 5, 1, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(589, 533);
+            this.pictureBox1.Size = new System.Drawing.Size(711, 534);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -218,10 +218,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(592, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(714, 5);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(1, 5, 1, 1);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(589, 533);
+            this.pictureBox2.Size = new System.Drawing.Size(711, 534);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -251,7 +251,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1478, 575);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1784, 576);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -265,24 +265,24 @@
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 539);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 540);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1182, 36);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1426, 36);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // pictureBoxLegend
             // 
-            this.pictureBoxLegend.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxLegend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxLegend.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLegend.Image")));
-            this.pictureBoxLegend.Location = new System.Drawing.Point(462, 6);
+            this.pictureBoxLegend.Location = new System.Drawing.Point(552, 6);
             this.pictureBoxLegend.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxLegend.Name = "pictureBoxLegend";
-            this.pictureBoxLegend.Size = new System.Drawing.Size(256, 30);
-            this.pictureBoxLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxLegend.Size = new System.Drawing.Size(321, 30);
+            this.pictureBoxLegend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLegend.TabIndex = 5;
             this.pictureBoxLegend.TabStop = false;
             // 
@@ -291,7 +291,7 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(329, 6);
+            this.label1.Location = new System.Drawing.Point(451, 6);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 30);
@@ -304,7 +304,7 @@
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label2.Location = new System.Drawing.Point(755, 6);
+            this.label2.Location = new System.Drawing.Point(877, 6);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 30);
@@ -340,7 +340,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(1185, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(1429, 3);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -348,7 +348,7 @@
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(290, 533);
+            this.dataGridView1.Size = new System.Drawing.Size(352, 534);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
@@ -392,7 +392,7 @@
             this.lbl_Info.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_Info.AutoSize = true;
             this.lbl_Info.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lbl_Info.Location = new System.Drawing.Point(1274, 548);
+            this.lbl_Info.Location = new System.Drawing.Point(1549, 549);
             this.lbl_Info.Name = "lbl_Info";
             this.lbl_Info.Size = new System.Drawing.Size(112, 18);
             this.lbl_Info.TabIndex = 8;
@@ -401,9 +401,9 @@
             // btnMarkAsViewed
             // 
             this.btnMarkAsViewed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMarkAsViewed.Location = new System.Drawing.Point(1185, 42);
+            this.btnMarkAsViewed.Location = new System.Drawing.Point(1429, 42);
             this.btnMarkAsViewed.Name = "btnMarkAsViewed";
-            this.btnMarkAsViewed.Size = new System.Drawing.Size(290, 33);
+            this.btnMarkAsViewed.Size = new System.Drawing.Size(352, 33);
             this.btnMarkAsViewed.TabIndex = 6;
             this.btnMarkAsViewed.Text = "Mark As Viewed";
             this.btnMarkAsViewed.UseVisualStyleBackColor = true;
@@ -417,7 +417,7 @@
             this.btnSelectResults.Location = new System.Drawing.Point(20, 22);
             this.btnSelectResults.Margin = new System.Windows.Forms.Padding(20, 4, 20, 4);
             this.btnSelectResults.Name = "btnSelectResults";
-            this.btnSelectResults.Size = new System.Drawing.Size(254, 32);
+            this.btnSelectResults.Size = new System.Drawing.Size(315, 32);
             this.btnSelectResults.TabIndex = 4;
             this.btnSelectResults.Text = "Select Results Folder";
             this.btnSelectResults.UseVisualStyleBackColor = true;
@@ -428,10 +428,10 @@
             this.btnNewAnalysis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewAnalysis.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewAnalysis.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnNewAnalysis.Location = new System.Drawing.Point(314, 22);
+            this.btnNewAnalysis.Location = new System.Drawing.Point(375, 22);
             this.btnNewAnalysis.Margin = new System.Windows.Forms.Padding(20, 4, 20, 4);
             this.btnNewAnalysis.Name = "btnNewAnalysis";
-            this.btnNewAnalysis.Size = new System.Drawing.Size(255, 32);
+            this.btnNewAnalysis.Size = new System.Drawing.Size(316, 32);
             this.btnNewAnalysis.TabIndex = 5;
             this.btnNewAnalysis.Text = "Run New Analysis";
             this.btnNewAnalysis.UseVisualStyleBackColor = true;
@@ -455,7 +455,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1478, 78);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1784, 78);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // tableLayoutPanel4
@@ -473,7 +473,7 @@
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel3.SetRowSpan(this.tableLayoutPanel4, 2);
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(589, 76);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(711, 76);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // flowLayoutPanel1
@@ -482,11 +482,11 @@
             this.flowLayoutPanel1.Controls.Add(this.btnClearFlag);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(592, 40);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(714, 40);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(589, 37);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(711, 37);
             this.flowLayoutPanel1.TabIndex = 9;
             // 
             // FlagComboBox
@@ -501,7 +501,7 @@
             "Blue",
             "Purple",
             "Gray"});
-            this.FlagComboBox.Location = new System.Drawing.Point(463, 6);
+            this.FlagComboBox.Location = new System.Drawing.Point(585, 6);
             this.FlagComboBox.Name = "FlagComboBox";
             this.FlagComboBox.Size = new System.Drawing.Size(123, 26);
             this.FlagComboBox.TabIndex = 8;
@@ -512,7 +512,7 @@
             this.btnClearFlag.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnClearFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearFlag.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnClearFlag.Location = new System.Drawing.Point(351, 5);
+            this.btnClearFlag.Location = new System.Drawing.Point(473, 5);
             this.btnClearFlag.Name = "btnClearFlag";
             this.btnClearFlag.Size = new System.Drawing.Size(106, 28);
             this.btnClearFlag.TabIndex = 9;
@@ -525,7 +525,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1503, 695);
+            this.ClientSize = new System.Drawing.Size(1809, 696);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip);
@@ -534,7 +534,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(1);
-            this.MinimumSize = new System.Drawing.Size(1239, 734);
+            this.MinimumSize = new System.Drawing.Size(1240, 735);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Computer Vision Emergency Response Toolkit";
