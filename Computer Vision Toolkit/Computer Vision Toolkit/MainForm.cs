@@ -97,6 +97,18 @@ namespace Computer_Vision_Toolkit
         public Process proc_img1;
         public Process proc_img2;
 
+        public bool pbox1_left = false;
+        public bool pbox2_left = false;
+        public bool pbox1_right = false;
+        public bool pbox2_right = false;
+
+        public Color centerColor = Color.FromArgb(0, 0, 0, 0);
+        public Color[] colors = { Color.FromArgb(255, 0, 0, 0) };
+        public SolidBrush brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0));
+        public GraphicsPath path = new GraphicsPath();
+        public Graphics g1;
+        public Graphics g2;
+
         //Mouse location
         int mouse_x;
         int mouse_y;
@@ -459,6 +471,9 @@ namespace Computer_Vision_Toolkit
                     pictureBox1.Update();
                     pictureBox2.Update();
 
+                    g1 = Graphics.FromImage(pictureBox1.Image);
+                    g2 = Graphics.FromImage(pictureBox2.Image);
+
                 }
                 else
                 {
@@ -763,8 +778,10 @@ namespace Computer_Vision_Toolkit
 
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
+            /*
             displayImages(true);
             dataGridView1.Focus();
+            */
         }
 
         //===================================================================================================================
@@ -773,12 +790,13 @@ namespace Computer_Vision_Toolkit
 
         private void pictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            /*
             if(e.Button == MouseButtons.Left)
             {
                 displayImages(true);
                 dataGridView1.Focus();
             }
-            
+            */
         }
 
         //===================================================================================================================
@@ -900,7 +918,21 @@ namespace Computer_Vision_Toolkit
             //Update mouse positions
             mouse_x = e.X;
             mouse_y = e.Y;
+/*
+            if ( pbox1_left || pbox2_left || pbox1_right || pbox2_right )
+                if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
+                {
+                    int size = 90;
+                    int offset = size / 2;
+                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                    int height_offset = (pictureBox1.Height - expected_height) / 2;
 
+                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+                    pictureBox1.Invalidate();
+                    pictureBox2.Invalidate();
+                }
+*/           
             //Update lbl_Info with mouse positions
             lbl_Info.Text = string.Format("( {0}, {1} )", mouse_x, mouse_y);
 
@@ -914,32 +946,29 @@ namespace Computer_Vision_Toolkit
         {
             try
             {
-                if (e.Button == MouseButtons.Left && e.Clicks == 1)
+                //Update mouse positions
+                mouse_x = e.X;
+                mouse_y = e.Y;
+
+                int size = 90;
+                int offset = size / 2;
+                float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                int height_offset = (pictureBox1.Height - expected_height) / 2;             
+
+                if (e.Button == MouseButtons.Left)
                 {
-                    int size = 90;
-                    int offset = size / 2;
-                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                    int height_offset = (pictureBox1.Height - expected_height) / 2;
-
-                    Color centerColor = Color.FromArgb(0, 0, 0, 0);
-                    Color[] colors = { Color.FromArgb(255, 0, 0, 0) };
-
-                    Graphics g1 = pictureBox1.CreateGraphics();
-                    Graphics g2 = pictureBox2.CreateGraphics();
-
-                    GraphicsPath path = new GraphicsPath();
-                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-
-                    Region reg = new Region(path);
-                    g2.SetClip(reg, CombineMode.Exclude);
-
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0));
-
-                    g2.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                    g1.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
-
+                    pbox1_left = true;
                 }
+
+                if (e.Button == MouseButtons.Right)
+                {
+                    pbox1_right = true;
+                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+                }
+
+                pictureBox1.Invalidate();
+                pictureBox2.Invalidate();
             }
             catch (Exception err)
             {
@@ -948,41 +977,114 @@ namespace Computer_Vision_Toolkit
             }
         }
 
+        
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
             try
             {
-                if (e.Button == MouseButtons.Left && e.Clicks == 1)
+                //Update mouse positions
+                mouse_x = e.X;
+                mouse_y = e.Y;
+
+                int size = 90;
+                int offset = size / 2;
+                float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                int height_offset = (pictureBox1.Height - expected_height) / 2;
+
+                if (e.Button == MouseButtons.Left)
                 {
-                    int size = 90;
-                    int offset = size / 2;
-                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                    int height_offset = (pictureBox1.Height - expected_height) / 2;
-
-                    Color centerColor = Color.FromArgb(0, 0, 0, 0);
-                    Color[] colors = { Color.FromArgb(255, 0, 0, 0) };
-
-                    Graphics g1 = pictureBox1.CreateGraphics();
-                    Graphics g2 = pictureBox2.CreateGraphics();
-
-                    GraphicsPath path = new GraphicsPath();
-                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-
-                    Region reg = new Region(path);
-                    g1.SetClip(reg, CombineMode.Exclude);
-
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0));
-
-                    g1.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                    g2.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
-
+                    pbox2_left = true;
                 }
+
+                if (e.Button == MouseButtons.Right)
+                {
+                    pbox2_right = true;
+                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+                }
+
+                pictureBox1.Invalidate();
+                pictureBox2.Invalidate();
             }
             catch (Exception err)
             {
                 elog.Log(err.TargetSite.ToString(), err.Message);
                 //MessageBox.Show(err.Message);
+            }
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                int size = 90;
+                int offset = size / 2;
+                float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                int height_offset = (pictureBox1.Height - expected_height) / 2;
+
+                if (pbox1_left)
+                {
+                    e.Graphics.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);      
+                }
+
+                if (pbox1_right)
+                {
+                    e.Graphics.FillPath(brush, path);
+                }
+
+                if (pbox2_left)
+                {
+                    GraphicsPath temp_path = new GraphicsPath();
+                    temp_path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+
+                    e.Graphics.ExcludeClip(new Region(temp_path));
+                    e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                }
+
+                if (pbox2_right)
+                {
+                    e.Graphics.SetClip(path, CombineMode.Exclude);
+                    e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                }
+            }
+        }
+
+
+        private void pictureBox2_Paint(object sender, PaintEventArgs e)
+        {
+            if (pictureBox2.Image != null)
+            {
+                int size = 90;
+                int offset = size / 2;
+                float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                int height_offset = (pictureBox1.Height - expected_height) / 2;
+
+                if (pbox2_left)
+                {
+                    e.Graphics.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
+                }
+
+                if (pbox2_right)
+                {
+                    e.Graphics.FillPath(brush, path);
+                }
+
+                if (pbox1_left)
+                {
+                    GraphicsPath temp_path = new GraphicsPath();
+                    temp_path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+
+                    e.Graphics.ExcludeClip(new Region(temp_path));
+                    e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                }
+
+                if (pbox1_right)
+                {
+                    e.Graphics.SetClip(path, CombineMode.Exclude);
+                    e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                }
             }
         }
 
@@ -992,9 +1094,19 @@ namespace Computer_Vision_Toolkit
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
+            pbox1_left = false;
+            pbox2_left = false;
+            pbox1_right = false;
+            pbox2_right = false;
+
             //Clear screen of drawn markers
-            pictureBox1.Refresh();
-            pictureBox2.Refresh();
+            if (e.Button == MouseButtons.Left)
+            {
+                pictureBox1.Refresh();
+                pictureBox2.Refresh();
+                path.Reset();
+            }
+
         }
 
         //===================================================================================================================
@@ -1051,6 +1163,8 @@ namespace Computer_Vision_Toolkit
                 //MessageBox.Show(err.Message);
             }
         }
+
+       
 
         //===================================================================================================================
         //-------------------------------------------------------------------------------------------------------------------
