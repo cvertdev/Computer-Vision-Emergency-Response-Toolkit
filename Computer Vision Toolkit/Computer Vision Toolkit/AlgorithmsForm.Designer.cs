@@ -36,6 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlgorithmsForm));
             this.paramData = new System.Windows.Forms.DataGridView();
             this.Algorithm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pipe = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UseChkBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -64,6 +65,7 @@
             this.paramData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paramData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Algorithm,
+            this.Pipe,
             this.UseChkBox,
             this.Order});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -95,10 +97,17 @@
             this.Algorithm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.Algorithm.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Algorithm.FillWeight = 45F;
+            this.Algorithm.FillWeight = 40F;
             this.Algorithm.HeaderText = "Algorithm";
             this.Algorithm.Name = "Algorithm";
             this.Algorithm.ReadOnly = true;
+            // 
+            // Pipe
+            // 
+            this.Pipe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Pipe.FillWeight = 15F;
+            this.Pipe.HeaderText = "Pipe";
+            this.Pipe.Name = "Pipe";
             // 
             // UseChkBox
             // 
@@ -112,7 +121,7 @@
             this.Order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Order.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Order.FillWeight = 35F;
+            this.Order.FillWeight = 25F;
             this.Order.HeaderText = "Order (Ex: 0, 1, 2, 3 ...)";
             this.Order.Name = "Order";
             // 
@@ -166,7 +175,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlgorithmsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AlgorithmsForm";
+            this.Text = "Select Algorithms";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParametersForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.paramData)).EndInit();
             this.ResumeLayout(false);
@@ -180,6 +189,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label saveStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn Algorithm;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Pipe;
         private System.Windows.Forms.DataGridViewCheckBoxColumn UseChkBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Order;
     }

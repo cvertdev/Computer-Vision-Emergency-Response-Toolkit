@@ -72,9 +72,6 @@ def DebrisDetect(img_path, Params):
 	#Zeroed out version of img
 	heatmap = img * 0
 
-	# Name of the original file
-	#result_name = ".".join(os.path.split(img_path)[1].split(".")[:-1])
-
 	#If needed, scale image
 	if scale_value != 1:
 		height, width = img.shape[:2]
@@ -120,11 +117,8 @@ def DebrisDetect(img_path, Params):
 
 		dx_scores = cv2.cvtColor(heatmap, cv2.COLOR_BGR2GRAY)
 		stats = (np.count_nonzero(dx_scores) / dx_scores.size ) * 100.0
-		#return result_name, dx_scores, t.get_time(), stats, 'D'
-		return dx_scores, t.get_time(), stats
 
-		#stats = ((heatmap.sum() / color_sum) / heatmap.size ) * 100.0
-		#return result_name, heatmap, t.get_time(1000), stats, 'D'
+		return dx_scores, t.get_time(), stats
 
 	# Otherwise, corner detection
 	else:
@@ -211,6 +205,7 @@ def DebrisDetect(img_path, Params):
 			# Filter based on HSV values of local pixels vs the green and brown HSV values
 			if all(((pixel >= lower_green).all() and (pixel <= upper_green).all()) or ((pixel >= lower_brown).all() and (pixel <= upper_brown).all()) for pixel in pixels):
 				continue
+
 			# Filter if all pixels have low saturation and high value
 			if all((pixel[1] <= 20 and pixel[2] >= 220) for pixel in pixels):
 				continue
@@ -266,20 +261,15 @@ def DebrisDetect(img_path, Params):
 
 			dx_scores = cv2.cvtColor(heatmap, cv2.COLOR_BGR2GRAY)
 			stats = (np.count_nonzero(dx_scores) / dx_scores.size ) * 100.0
-			#return result_name, dx_scores, t.get_time(), stats, 'D'
-			return dx_scores, t.get_time(), stats
 
-			#stats = ((heatmap.sum() / color_sum) / heatmap.size ) * 100.0
-			#return result_name, heatmap, t.get_time(1000), stats, 'D'
+			return dx_scores, t.get_time(), stats
 
 		else:
 			t.stop()
 
 			dx_scores = cv2.cvtColor(heatmap, cv2.COLOR_BGR2GRAY)
 			stats = (np.count_nonzero(dx_scores) / dx_scores.size ) * 100.0
-			#return result_name, dx_scores, t.get_time(), stats, 'O'
+
 			return dx_scores, t.get_time(), stats
 
-			#stats = ((heatmap.sum() / color_sum) / heatmap.size ) * 100.0
-			#return result_name, heatmap, t.get_time(1000), stats, 'O'
 	exit()
