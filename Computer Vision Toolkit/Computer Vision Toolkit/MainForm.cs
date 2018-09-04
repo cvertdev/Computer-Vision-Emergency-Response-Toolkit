@@ -473,12 +473,13 @@ namespace Computer_Vision_Toolkit
 
                     g1 = Graphics.FromImage(pictureBox1.Image);
                     g2 = Graphics.FromImage(pictureBox2.Image);
+                    path.Reset();
 
                 }
                 else
                 {
                    
-                    //find image with selected checkbox item and show it in pictureBoxes 
+                    //Find the file of the selected image and show the image in its own window 
                     foreach (var ext in extensions)
                         if (dataGridView1.SelectedRows != null && checkImages(Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext), 1) == true)
                         {
@@ -579,10 +580,8 @@ namespace Computer_Vision_Toolkit
 
         private void Watcher_Created(object sender, FileSystemEventArgs e)
         {
-            
             //Calls the method with the thread that owns the UI object
-            Invoke((MethodInvoker)(() => updateImages()));
-            
+            Invoke((MethodInvoker)(() => updateImages()));      
         }
 
 
@@ -773,33 +772,6 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //----------------------------------------------Image Double Clicked-------------------------------------------------
-        //===================================================================================================================
-
-        private void pictureBox_DoubleClick(object sender, EventArgs e)
-        {
-            /*
-            displayImages(true);
-            dataGridView1.Focus();
-            */
-        }
-
-        //===================================================================================================================
-        //----------------------------------------------Image Single Clicked-------------------------------------------------
-        //===================================================================================================================
-
-        private void pictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            /*
-            if(e.Button == MouseButtons.Left)
-            {
-                displayImages(true);
-                dataGridView1.Focus();
-            }
-            */
-        }
-
-        //===================================================================================================================
         //----------------------------------------------Mark Image as Viewed-------------------------------------------------
         //===================================================================================================================
 
@@ -939,7 +911,7 @@ namespace Computer_Vision_Toolkit
         }
 
         //===================================================================================================================
-        //----------------------------------------------Mouse Click Handler--------------------------------------------------
+        //----------------------------------------------Mouse Click Handlers--------------------------------------------------
         //===================================================================================================================
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -977,7 +949,10 @@ namespace Computer_Vision_Toolkit
             }
         }
 
-        
+        //===================================================================================================================
+        //----------------------------------------------Mouse Click Handlers--------------------------------------------------
+        //===================================================================================================================
+
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
             try
@@ -1012,6 +987,10 @@ namespace Computer_Vision_Toolkit
                 //MessageBox.Show(err.Message);
             }
         }
+
+        //===================================================================================================================
+        //-------------------------------------------PictureBox OnPaint Handlers---------------------------------------------
+        //===================================================================================================================
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
@@ -1050,6 +1029,9 @@ namespace Computer_Vision_Toolkit
             }
         }
 
+        //===================================================================================================================
+        //-------------------------------------------PictureBox OnPaint Handlers---------------------------------------------
+        //===================================================================================================================
 
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
@@ -1085,19 +1067,23 @@ namespace Computer_Vision_Toolkit
                     e.Graphics.SetClip(path, CombineMode.Exclude);
                     e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
                 }
+
+                //PictureBox2 is the last to be drawn, therefore the click bools can be reset
+                pbox1_left = false;
+                pbox2_left = false;
+                pbox1_right = false;
+                pbox2_right = false;
+
             }
         }
 
         //===================================================================================================================
-        //----------------------------------------------Mouse Click Handler--------------------------------------------------
+        //------------------------------------------------Mouse Click Up-----------------------------------------------------
         //===================================================================================================================
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            pbox1_left = false;
-            pbox2_left = false;
-            pbox1_right = false;
-            pbox2_right = false;
+            
 
             //Clear screen of drawn markers
             if (e.Button == MouseButtons.Left)
