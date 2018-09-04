@@ -427,7 +427,7 @@
             this.btnSelectResults.Name = "btnSelectResults";
             this.btnSelectResults.Size = new System.Drawing.Size(315, 32);
             this.btnSelectResults.TabIndex = 4;
-            this.btnSelectResults.Text = "Select Results Folder";
+            this.btnSelectResults.Text = "View Analysis Results";
             this.btnSelectResults.UseVisualStyleBackColor = true;
             this.btnSelectResults.Click += new System.EventHandler(this.menuBtnSelectResults_Click);
             // 
@@ -536,7 +536,7 @@
             "Blue",
             "Purple",
             "Gray"});
-            this.FlagComboBox.Location = new System.Drawing.Point(1, 8);
+            this.FlagComboBox.Location = new System.Drawing.Point(1, 5);
             this.FlagComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.FlagComboBox.Name = "FlagComboBox";
             this.FlagComboBox.Size = new System.Drawing.Size(104, 26);
