@@ -46,7 +46,6 @@
             this.menuOptimizedMode = new System.Windows.Forms.ToolStripMenuItem();
             this.viewingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.openImageNewWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -71,6 +70,7 @@
             this.FlagComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnClearFlag = new System.Windows.Forms.Button();
+            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -95,7 +95,7 @@
             this.menuBtnSelectResults,
             this.menuBtnNewAnalysis,
             this.menuOptimizedMode,
-            this.openImageNewWindow});
+            this.menuAbout});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -194,16 +194,6 @@
             this.analysisToolStripMenuItem1.Size = new System.Drawing.Size(131, 24);
             this.analysisToolStripMenuItem1.Text = "Analysis";
             this.analysisToolStripMenuItem1.Click += new System.EventHandler(this.analysisToolStripMenuItem_Click);
-            // 
-            // openImageNewWindow
-            // 
-            this.openImageNewWindow.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.openImageNewWindow.Enabled = false;
-            this.openImageNewWindow.Name = "openImageNewWindow";
-            this.openImageNewWindow.Size = new System.Drawing.Size(212, 24);
-            this.openImageNewWindow.Text = "Open Image in New Window";
-            this.openImageNewWindow.Visible = false;
-            this.openImageNewWindow.Click += new System.EventHandler(this.openImagesInNewWindowToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
@@ -571,6 +561,13 @@
             this.btnClearFlag.UseVisualStyleBackColor = true;
             this.btnClearFlag.Click += new System.EventHandler(this.btnClearFlag_Click);
             // 
+            // menuAbout
+            // 
+            this.menuAbout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.menuAbout.Name = "menuAbout";
+            this.menuAbout.Size = new System.Drawing.Size(62, 24);
+            this.menuAbout.Text = "About";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -627,7 +624,6 @@
         private System.Windows.Forms.ToolStripMenuItem optimizeForViewingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem analysisToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openImageNewWindow;
         private System.Windows.Forms.ToolStripMenuItem menuOptimizedMode;
         private System.Windows.Forms.Button btnSelectResults;
         private System.Windows.Forms.Button btnNewAnalysis;
@@ -649,5 +645,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnOpenImageNewWindow;
+        private System.Windows.Forms.ToolStripMenuItem menuAbout;
     }
 }
