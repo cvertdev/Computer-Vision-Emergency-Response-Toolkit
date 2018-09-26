@@ -51,9 +51,9 @@
             this.label1.Location = new System.Drawing.Point(158, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 18);
+            this.label1.Size = new System.Drawing.Size(228, 18);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Please Select A Results Directory";
+            this.label1.Text = "Please Select an Analysis to View";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
@@ -159,7 +159,7 @@
             this.MinimumSize = new System.Drawing.Size(546, 293);
             this.Name = "resultDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Select Results Folder";
+            this.Text = "View Analysis Results";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

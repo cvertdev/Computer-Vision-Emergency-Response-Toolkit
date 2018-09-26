@@ -116,7 +116,7 @@ namespace Computer_Vision_Toolkit
                     //Check/Install required packages
                     Invoke(new Info(UpdateInfo), "Checking Python version...");
                     string python_version = Process.Start(new ProcessStartInfo { FileName = Path.Combine(Environment.CurrentDirectory, "lib\\Setup\\checkPythonVersion.bat"), CreateNoWindow = true, UseShellExecute = false, RedirectStandardOutput = true }).StandardOutput.ReadToEnd();
-                    if (python_version.Contains("Python 3.6"))
+                    if (python_version.Contains("Python 3.6") || python_version.Contains("Python 3.7"))
                     {
                         Invoke(new Info(UpdateInfo), "Checking Python version......OK");
 
