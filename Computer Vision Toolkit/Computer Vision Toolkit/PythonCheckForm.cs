@@ -171,21 +171,23 @@ namespace Computer_Vision_Toolkit
                             }
                         }
 
-                        Invoke(new Info(UpdateInfo), "Python Setup Complete...\nYou may now close this window.");
+                        Invoke(new Info(UpdateInfo), "Python Setup Complete...");
                         settings.FirstRun = false;
                         is_python_installed = true;
+                        this.Close();
                     }
                     else
                     {
-                        Invoke(new Info(UpdateInfo), "Python 3.6.4 or greater is required to analyze images.");
+                        Invoke(new Info(UpdateInfo), "Python 3.6.4 or greater is required to analyze images.\nYou may still view results without Python installed.");
                         is_python_installed = false;
                     }      
                 }
                 else
                 {
-                    Invoke(new Info(UpdateInfo), "Finished...\nYou may now close this window.");
+                    Invoke(new Info(UpdateInfo), "Finished...");
                     Invoke(new Bool(SetWaitCursor), false);
                     is_python_installed = true;
+                    this.Close();
                 }
 
                 //Re-enabled the close button
