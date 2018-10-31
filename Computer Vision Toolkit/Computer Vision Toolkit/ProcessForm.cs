@@ -249,12 +249,25 @@ namespace Computer_Vision_Toolkit
                 string path;
                 foreach (string file in selectedFileNames)
                 {
-                    if (file.ToLower().EndsWith(".jpg") || file.ToLower().EndsWith(".jpeg") || file.ToLower().EndsWith(".png") || file.ToLower().EndsWith(".mp4"))
+                    if(checkBoxIncludeVideo.Checked)
                     {
-                        path = Path.Combine(copyDir, Path.GetFileName(file));
-                        File.Copy(file, path, true);
-                        fileCt++;
+                        if (file.ToLower().EndsWith(".jpg") || file.ToLower().EndsWith(".jpeg") || file.ToLower().EndsWith(".png") || file.ToLower().EndsWith(".mp4"))
+                        {
+                            path = Path.Combine(copyDir, Path.GetFileName(file));
+                            File.Copy(file, path, true);
+                            fileCt++;
+                        }
                     }
+                    else
+                    {
+                        if (file.ToLower().EndsWith(".jpg") || file.ToLower().EndsWith(".jpeg") || file.ToLower().EndsWith(".png"))
+                        {
+                            path = Path.Combine(copyDir, Path.GetFileName(file));
+                            File.Copy(file, path, true);
+                            fileCt++;
+                        }
+                    }
+                    
                 }
 
                 if (fileCt > 0)
@@ -283,7 +296,7 @@ namespace Computer_Vision_Toolkit
                     //Setup the file selection window
                     OpenFileDialog openFileDialog1 = new OpenFileDialog();
                     openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    openFileDialog1.Filter = "image files (*.jpg, *.jpeg, *.png, *.mp4)|*.jpg; *.jpeg; *.png; *.mp4|All files (*.*)|*.*";
+                    openFileDialog1.Filter = (checkBoxIncludeVideo.Checked)? "image files (*.jpg, *.jpeg, *.png, *.mp4)|*.jpg; *.jpeg; *.png; *.mp4|All files (*.*)|*.*" : "image files (*.jpg, *.jpeg, *.png)|*.jpg; *.jpeg; *.png|All files (*.*)|*.*";
                     openFileDialog1.FilterIndex = 1;
                     openFileDialog1.RestoreDirectory = true;
                     openFileDialog1.Multiselect = true;
@@ -378,6 +391,7 @@ namespace Computer_Vision_Toolkit
                     btnSelectFolder.Enabled = false;
                     btnSelectFile.Enabled = false;
                     btnAnalyze.Enabled = false;
+                    checkBoxIncludeVideo.Enabled = false;
 
                     //Inform user that images are being analyzed
                     lblProgressBar.Text = "Initializing...";
@@ -503,6 +517,7 @@ namespace Computer_Vision_Toolkit
                         case "-f-":     //Backend has finished
                             {
                                 lblProgressBar.Text = "Finished...";
+                                btnAnalyze.Text = "Finished";
                                 break;
                             }
 
