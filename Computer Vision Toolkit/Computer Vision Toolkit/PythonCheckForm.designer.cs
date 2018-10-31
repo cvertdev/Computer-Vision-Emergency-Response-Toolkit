@@ -52,9 +52,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pythonLink.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pythonLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pythonLink.Location = new System.Drawing.Point(12, 93);
+            this.pythonLink.Location = new System.Drawing.Point(12, 85);
             this.pythonLink.Name = "pythonLink";
-            this.pythonLink.Size = new System.Drawing.Size(287, 19);
+            this.pythonLink.Size = new System.Drawing.Size(287, 35);
             this.pythonLink.TabIndex = 1;
             this.pythonLink.TabStop = true;
             this.pythonLink.Text = "Python 3.6.4 Download Page";
