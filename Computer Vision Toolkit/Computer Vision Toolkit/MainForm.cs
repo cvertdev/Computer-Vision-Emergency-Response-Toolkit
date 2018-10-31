@@ -62,7 +62,7 @@ namespace Computer_Vision_Toolkit
 {
 
     //Global Settings
-    public struct Settings
+    public struct Settings      //NOTE: THIS NEEDS TO BE CONVERTED TO USING THE NATIVE SETTINGS MANAGER WITHIN C# APPLICATIONS
     {
         public bool FirstRun;
         public bool RunPOST;
@@ -81,6 +81,7 @@ namespace Computer_Vision_Toolkit
         public ErrorLog elog = new ErrorLog();
         public StatusLog slog = new StatusLog();
 
+        //NOTE: "settings.ini" NEEDS TO BE CONVERTED TO USING THE NATIVE SETTINGS MANAGER WITHIN C# APPLICATIONS
         //Settings
         public Settings settings = new Settings();     //Values read from the 'settings.ini'
         public string settingsPath = @"settings.ini";
@@ -110,8 +111,8 @@ namespace Computer_Vision_Toolkit
         public Graphics g2;
 
         //Mouse location
-        int mouse_x;
-        int mouse_y;
+        public int mouse_x;
+        public int mouse_y;
 
         //===================================================================================================================
         //-------------------------------------------------------------------------------------------------------------------
@@ -135,7 +136,7 @@ namespace Computer_Vision_Toolkit
         //------------------------------------------------Read Settings File-------------------------------------------------
         //===================================================================================================================
 
-        private void ReadSettings()
+        private void ReadSettings()     //NOTE: THIS NEEDS TO BE CONVERTED TO USING THE NATIVE SETTINGS MANAGER WITHIN C# APPLICATIONS
         {
             try
             {
@@ -227,7 +228,7 @@ namespace Computer_Vision_Toolkit
         //===================================================================================================================
 
         //Update the settings.ini
-        private void UpdateSettings()
+        private void UpdateSettings()       //NOTE: THIS NEEDS TO BE CONVERTED TO USING THE NATIVE SETTINGS MANAGER WITHIN C# APPLICATIONS
         {
             try
             {
@@ -247,7 +248,6 @@ namespace Computer_Vision_Toolkit
                 elog.Log(err.TargetSite.ToString(), err.Message);
                 //MessageBox.Show(err.Message);
             }
-
         }
 
         //===================================================================================================================
@@ -268,8 +268,7 @@ namespace Computer_Vision_Toolkit
                 elog.Log(err.TargetSite.ToString(), err.Message);
                 //MessageBox.Show(err.Message);
                 return str;
-            }
-            
+            } 
         }
 
         //===================================================================================================================
@@ -316,7 +315,6 @@ namespace Computer_Vision_Toolkit
                 //MessageBox.Show(err.Message);
                 return str;
             }
-
         }
 
         //===================================================================================================================
@@ -388,7 +386,6 @@ namespace Computer_Vision_Toolkit
                 //MessageBox.Show(err.Message);
                 return str;
             }
-
         }
 
         //===================================================================================================================
@@ -428,7 +425,6 @@ namespace Computer_Vision_Toolkit
                 elog.Log(err.TargetSite.ToString(), err.Message);
                 //MessageBox.Show(err.Message);
             }
-
         }
 
         //===================================================================================================================
@@ -498,7 +494,6 @@ namespace Computer_Vision_Toolkit
                 elog.Log(err.TargetSite.ToString(), err.Message);
                 //MessageBox.Show(err.Message);
             }
-
         }
 
         //===================================================================================================================
@@ -570,8 +565,16 @@ namespace Computer_Vision_Toolkit
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
-            //Calls the method with the thread that owns the UI object
-            Invoke((MethodInvoker)(() => updateImages()));
+            try
+            {
+                //Calls the method with the thread that owns the UI object
+                Invoke((MethodInvoker)(() => updateImages()));
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -580,8 +583,16 @@ namespace Computer_Vision_Toolkit
 
         private void Watcher_Created(object sender, FileSystemEventArgs e)
         {
-            //Calls the method with the thread that owns the UI object
-            Invoke((MethodInvoker)(() => updateImages()));      
+            try
+            {
+                //Calls the method with the thread that owns the UI object
+                Invoke((MethodInvoker)(() => updateImages()));
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
 
@@ -591,7 +602,15 @@ namespace Computer_Vision_Toolkit
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            displayImages(false);
+            try
+            {
+                displayImages(false);
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -735,8 +754,16 @@ namespace Computer_Vision_Toolkit
 
         private void editParametersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ParametersForm pf = new ParametersForm();
-            pf.ShowDialog();
+            try
+            {
+                ParametersForm pf = new ParametersForm();
+                pf.ShowDialog();
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -745,9 +772,17 @@ namespace Computer_Vision_Toolkit
 
         private void viewingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            settings.AllowMultiThread = false;
-            menuOptimizedMode.Text = "Optimized for: Viewing";
-            UpdateSettings();
+            try
+            {
+                settings.AllowMultiThread = false;
+                menuOptimizedMode.Text = "Optimized for: Viewing";
+                UpdateSettings();
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -756,9 +791,17 @@ namespace Computer_Vision_Toolkit
 
         private void analysisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            settings.AllowMultiThread = true;
-            menuOptimizedMode.Text = "Optimized for: Analysis";
-            UpdateSettings();
+            try
+            {
+                settings.AllowMultiThread = true;
+                menuOptimizedMode.Text = "Optimized for: Analysis";
+                UpdateSettings();
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -767,8 +810,16 @@ namespace Computer_Vision_Toolkit
 
         private void openImagesInNewWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            displayImages(true);
-            dataGridView1.Focus();
+            try
+            {
+                displayImages(true);
+                dataGridView1.Focus();
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -856,7 +907,6 @@ namespace Computer_Vision_Toolkit
                 elog.Log(err.TargetSite.ToString(), err.Message);
                 //MessageBox.Show(err.Message);
             }
-
         }
 
         //===================================================================================================================
@@ -887,26 +937,34 @@ namespace Computer_Vision_Toolkit
         //Mouse moved over pictureBox2
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            //Update mouse positions
-            mouse_x = e.X;
-            mouse_y = e.Y;
-/*
-            if ( pbox1_left || pbox2_left || pbox1_right || pbox2_right )
-                if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
-                {
-                    int size = 90;
-                    int offset = size / 2;
-                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                    int height_offset = (pictureBox1.Height - expected_height) / 2;
+            try
+            {
+                //Update mouse positions
+                mouse_x = e.X;
+                mouse_y = e.Y;
+                /*
+                if ( pbox1_left || pbox2_left || pbox1_right || pbox2_right )
+                    if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
+                    {
+                        int size = 90;
+                        int offset = size / 2;
+                        float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                        int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                        int height_offset = (pictureBox1.Height - expected_height) / 2;
 
-                    path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-                    pictureBox1.Invalidate();
-                    pictureBox2.Invalidate();
-                }
-*/           
-            //Update lbl_Info with mouse positions
-            lbl_Info.Text = string.Format("( {0}, {1} )", mouse_x, mouse_y);
+                        path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+                        pictureBox1.Invalidate();
+                        pictureBox2.Invalidate();
+                    }
+                */
+                //Update lbl_Info with mouse positions
+                lbl_Info.Text = string.Format("( {0}, {1} )", mouse_x, mouse_y);
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
 
         }
 
@@ -994,39 +1052,48 @@ namespace Computer_Vision_Toolkit
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            if (pictureBox1.Image != null)
+            try
             {
-                int size = 90;
-                int offset = size / 2;
-                float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                int height_offset = (pictureBox1.Height - expected_height) / 2;
-
-                if (pbox1_left)
+                if (pictureBox1.Image != null)
                 {
-                    e.Graphics.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);      
-                }
+                    int size = 90;
+                    int offset = size / 2;
+                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                    int height_offset = (pictureBox1.Height - expected_height) / 2;
 
-                if (pbox1_right)
-                {
-                    e.Graphics.FillPath(brush, path);
-                }
+                    if (pbox1_left)
+                    {
+                        e.Graphics.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
+                    }
 
-                if (pbox2_left)
-                {
-                    GraphicsPath temp_path = new GraphicsPath();
-                    temp_path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+                    if (pbox1_right)
+                    {
+                        e.Graphics.FillPath(brush, path);
+                    }
 
-                    e.Graphics.ExcludeClip(new Region(temp_path));
-                    e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                }
+                    if (pbox2_left)
+                    {
+                        GraphicsPath temp_path = new GraphicsPath();
+                        temp_path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
 
-                if (pbox2_right)
-                {
-                    e.Graphics.SetClip(path, CombineMode.Exclude);
-                    e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                        e.Graphics.ExcludeClip(new Region(temp_path));
+                        e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                    }
+
+                    if (pbox2_right)
+                    {
+                        e.Graphics.SetClip(path, CombineMode.Exclude);
+                        e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                    }
                 }
             }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
+
         }
 
         //===================================================================================================================
@@ -1035,45 +1102,53 @@ namespace Computer_Vision_Toolkit
 
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
         {
-            if (pictureBox2.Image != null)
+            try
             {
-                int size = 90;
-                int offset = size / 2;
-                float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                int height_offset = (pictureBox1.Height - expected_height) / 2;
-
-                if (pbox2_left)
+                if (pictureBox2.Image != null)
                 {
-                    e.Graphics.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
+                    int size = 90;
+                    int offset = size / 2;
+                    float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
+                    int expected_height = (int)((float)pictureBox1.Width / image_ratio);
+                    int height_offset = (pictureBox1.Height - expected_height) / 2;
+
+                    if (pbox2_left)
+                    {
+                        e.Graphics.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
+                    }
+
+                    if (pbox2_right)
+                    {
+                        e.Graphics.FillPath(brush, path);
+                    }
+
+                    if (pbox1_left)
+                    {
+                        GraphicsPath temp_path = new GraphicsPath();
+                        temp_path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
+
+                        e.Graphics.ExcludeClip(new Region(temp_path));
+                        e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                    }
+
+                    if (pbox1_right)
+                    {
+                        e.Graphics.SetClip(path, CombineMode.Exclude);
+                        e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
+                    }
+
+                    //PictureBox2 is the last to be drawn, therefore the click bools can be reset
+                    pbox1_left = false;
+                    pbox2_left = false;
+                    pbox1_right = false;
+                    pbox2_right = false;
+
                 }
-
-                if (pbox2_right)
-                {
-                    e.Graphics.FillPath(brush, path);
-                }
-
-                if (pbox1_left)
-                {
-                    GraphicsPath temp_path = new GraphicsPath();
-                    temp_path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-
-                    e.Graphics.ExcludeClip(new Region(temp_path));
-                    e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                }
-
-                if (pbox1_right)
-                {
-                    e.Graphics.SetClip(path, CombineMode.Exclude);
-                    e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                }
-
-                //PictureBox2 is the last to be drawn, therefore the click bools can be reset
-                pbox1_left = false;
-                pbox2_left = false;
-                pbox1_right = false;
-                pbox2_right = false;
-
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
             }
         }
 
@@ -1083,16 +1158,21 @@ namespace Computer_Vision_Toolkit
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            
-
-            //Clear screen of drawn markers
-            if (e.Button == MouseButtons.Left)
+            try
             {
-                pictureBox1.Refresh();
-                pictureBox2.Refresh();
-                path.Reset();
+                //Clear screen of drawn markers
+                if (e.Button == MouseButtons.Left)
+                {
+                    pictureBox1.Refresh();
+                    pictureBox2.Refresh();
+                    path.Reset();
+                }
             }
-
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -1101,8 +1181,16 @@ namespace Computer_Vision_Toolkit
 
         private void selectAlgorithmsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AlgorithmsForm af = new AlgorithmsForm();
-            af.ShowDialog();
+            try
+            {
+                AlgorithmsForm af = new AlgorithmsForm();
+                af.ShowDialog();
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -1111,10 +1199,18 @@ namespace Computer_Vision_Toolkit
 
         private void FlagComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            MarkAsFlagged();
-            FlagComboBox.SelectedIndex = -1;
-            dataGridView1.Update();
-            dataGridView1.Focus();
+            try
+            {
+                MarkAsFlagged();
+                FlagComboBox.SelectedIndex = -1;
+                dataGridView1.Update();
+                dataGridView1.Focus();
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -1156,7 +1252,15 @@ namespace Computer_Vision_Toolkit
 
         private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
         //===================================================================================================================
@@ -1165,7 +1269,16 @@ namespace Computer_Vision_Toolkit
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                AboutBox about = new AboutBox();
+                about.ShowDialog();
+            }
+            catch (Exception err)
+            {
+                elog.Log(err.TargetSite.ToString(), err.Message);
+                //MessageBox.Show(err.Message);
+            }
         }
 
 

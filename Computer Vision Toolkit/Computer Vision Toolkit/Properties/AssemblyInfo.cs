@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Computer Vision Toolkit")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("")]
+[assembly: AssemblyDescription("Please submit all comments, concerns, or questions to the project's GitHub repository. \r\n\r\nGitHub: https://github.com/cvertdev/Computer-Vision-Emergency-Response-Toolkit")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Computer Vision Toolkit")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCompany("Website: http://cver.hrail.crasar.org")]
+[assembly: AssemblyProduct("Computer Vision Emergency Response Toolkit")]
+[assembly: AssemblyCopyright("Copyright(c) 2018, Texas A&M Engineering Experiment Station")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
