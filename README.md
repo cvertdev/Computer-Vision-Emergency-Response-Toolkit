@@ -2,6 +2,11 @@
 
 Release version can be found at: http://cver.hrail.crasar.org
 
+## Visual Studio
+* Microsoft .NET Framework 4.6.1
+* Microsoft Visual Studio 2017 Installer Projects Extension
+  * This can be installed by clicking ```Tools -> Extensions and Updates... -> Online``` then entering the name of the extension in the search box
+  
 
 ## Python Setup
 * Python 3.6.4
