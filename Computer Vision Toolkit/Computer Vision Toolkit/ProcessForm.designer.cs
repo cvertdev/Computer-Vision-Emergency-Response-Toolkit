@@ -38,6 +38,7 @@
             this.filesSelected = new System.Windows.Forms.Label();
             this.infoLog = new System.Windows.Forms.TextBox();
             this.btnBatchName = new System.Windows.Forms.Button();
+            this.checkBoxIncludeVideo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnAnalyze
@@ -47,7 +48,7 @@
             this.btnAnalyze.Enabled = false;
             this.btnAnalyze.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnAnalyze.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.btnAnalyze.Location = new System.Drawing.Point(432, 167);
+            this.btnAnalyze.Location = new System.Drawing.Point(496, 191);
             this.btnAnalyze.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnalyze.Name = "btnAnalyze";
             this.btnAnalyze.Size = new System.Drawing.Size(114, 33);
@@ -91,7 +92,7 @@
             this.lblProgressBar.AutoSize = true;
             this.lblProgressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.lblProgressBar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblProgressBar.Location = new System.Drawing.Point(13, 76);
+            this.lblProgressBar.Location = new System.Drawing.Point(13, 91);
             this.lblProgressBar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProgressBar.Name = "lblProgressBar";
             this.lblProgressBar.Size = new System.Drawing.Size(176, 18);
@@ -103,10 +104,10 @@
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.progressBar1.Location = new System.Drawing.Point(16, 98);
+            this.progressBar1.Location = new System.Drawing.Point(16, 113);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(530, 31);
+            this.progressBar1.Size = new System.Drawing.Size(594, 31);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 5;
             // 
@@ -116,7 +117,7 @@
             this.lblPercent.AutoSize = true;
             this.lblPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.lblPercent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblPercent.Location = new System.Drawing.Point(513, 76);
+            this.lblPercent.Location = new System.Drawing.Point(577, 91);
             this.lblPercent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(33, 18);
@@ -132,7 +133,7 @@
             this.filesSelected.Location = new System.Drawing.Point(265, 19);
             this.filesSelected.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.filesSelected.Name = "filesSelected";
-            this.filesSelected.Size = new System.Drawing.Size(281, 33);
+            this.filesSelected.Size = new System.Drawing.Size(352, 33);
             this.filesSelected.TabIndex = 7;
             this.filesSelected.Text = "No Files Selected";
             this.filesSelected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,12 +144,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.infoLog.BackColor = System.Drawing.Color.LightGray;
-            this.infoLog.Location = new System.Drawing.Point(16, 144);
+            this.infoLog.Location = new System.Drawing.Point(16, 159);
             this.infoLog.Multiline = true;
             this.infoLog.Name = "infoLog";
             this.infoLog.ReadOnly = true;
             this.infoLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.infoLog.Size = new System.Drawing.Size(398, 80);
+            this.infoLog.Size = new System.Drawing.Size(462, 95);
             this.infoLog.TabIndex = 8;
             this.infoLog.TabStop = false;
             // 
@@ -163,12 +164,24 @@
             this.btnBatchName.UseVisualStyleBackColor = true;
             this.btnBatchName.Click += new System.EventHandler(this.btnBatchName_Click);
             // 
+            // checkBoxIncludeVideo
+            // 
+            this.checkBoxIncludeVideo.AutoSize = true;
+            this.checkBoxIncludeVideo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxIncludeVideo.Location = new System.Drawing.Point(79, 58);
+            this.checkBoxIncludeVideo.Name = "checkBoxIncludeVideo";
+            this.checkBoxIncludeVideo.Size = new System.Drawing.Size(122, 22);
+            this.checkBoxIncludeVideo.TabIndex = 10;
+            this.checkBoxIncludeVideo.Text = "Include Videos";
+            this.checkBoxIncludeVideo.UseVisualStyleBackColor = true;
+            // 
             // ProcessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(564, 236);
+            this.ClientSize = new System.Drawing.Size(628, 266);
+            this.Controls.Add(this.checkBoxIncludeVideo);
             this.Controls.Add(this.btnBatchName);
             this.Controls.Add(this.infoLog);
             this.Controls.Add(this.filesSelected);
@@ -180,7 +193,7 @@
             this.Controls.Add(this.btnAnalyze);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(580, 275);
+            this.MinimumSize = new System.Drawing.Size(644, 305);
             this.Name = "ProcessForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Analysis";
@@ -200,5 +213,6 @@
         private System.Windows.Forms.Label filesSelected;
         private System.Windows.Forms.TextBox infoLog;
         private System.Windows.Forms.Button btnBatchName;
+        private System.Windows.Forms.CheckBox checkBoxIncludeVideo;
     }
 }

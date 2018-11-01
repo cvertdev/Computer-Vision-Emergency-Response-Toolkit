@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,12 +67,12 @@
             this.btnNewAnalysis = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnOpenImageNewWindow = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.FlagComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnClearFlag = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnOpenImageNewWindow = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -82,9 +82,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -229,7 +229,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(1, 5);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(1, 5, 1, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(594, 534);
+            this.pictureBox1.Size = new System.Drawing.Size(594, 522);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -245,7 +245,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(597, 5);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(1, 5, 1, 1);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(594, 534);
+            this.pictureBox2.Size = new System.Drawing.Size(594, 522);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -269,13 +269,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbl_Info, 2, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 108);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 122);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1490, 576);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1490, 564);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -289,7 +289,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 540);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 528);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
@@ -341,28 +341,28 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Flag,
             this.Checked,
             this.Image,
             this.Score});
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(1195, 3);
             this.dataGridView1.MultiSelect = false;
@@ -372,42 +372,43 @@
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(292, 534);
+            this.dataGridView1.Size = new System.Drawing.Size(292, 522);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // Flag
             // 
+            this.Flag.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Flag.FillWeight = 20F;
             this.Flag.HeaderText = "Flag";
             this.Flag.Name = "Flag";
             this.Flag.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Flag.Width = 40;
             // 
             // Checked
             // 
             this.Checked.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Checked.DefaultCellStyle = dataGridViewCellStyle37;
-            this.Checked.FillWeight = 27F;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Checked.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Checked.FillWeight = 20F;
             this.Checked.HeaderText = "Viewed";
             this.Checked.Name = "Checked";
             // 
             // Image
             // 
             this.Image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Image.DefaultCellStyle = dataGridViewCellStyle38;
-            this.Image.FillWeight = 56F;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Image.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Image.FillWeight = 40F;
             this.Image.HeaderText = "Image";
             this.Image.Name = "Image";
             // 
             // Score
             // 
             this.Score.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Score.DefaultCellStyle = dataGridViewCellStyle39;
-            this.Score.FillWeight = 27F;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Score.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Score.FillWeight = 20F;
             this.Score.HeaderText = "Score";
             this.Score.Name = "Score";
             // 
@@ -416,7 +417,7 @@
             this.lbl_Info.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_Info.AutoSize = true;
             this.lbl_Info.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lbl_Info.Location = new System.Drawing.Point(1285, 549);
+            this.lbl_Info.Location = new System.Drawing.Point(1285, 537);
             this.lbl_Info.Name = "lbl_Info";
             this.lbl_Info.Size = new System.Drawing.Size(112, 18);
             this.lbl_Info.TabIndex = 8;
@@ -439,10 +440,10 @@
             this.btnSelectResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelectResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectResults.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSelectResults.Location = new System.Drawing.Point(20, 22);
+            this.btnSelectResults.Location = new System.Drawing.Point(20, 17);
             this.btnSelectResults.Margin = new System.Windows.Forms.Padding(20, 4, 20, 4);
             this.btnSelectResults.Name = "btnSelectResults";
-            this.btnSelectResults.Size = new System.Drawing.Size(257, 32);
+            this.btnSelectResults.Size = new System.Drawing.Size(257, 41);
             this.btnSelectResults.TabIndex = 4;
             this.btnSelectResults.Text = "View Analysis Results";
             this.btnSelectResults.UseVisualStyleBackColor = true;
@@ -453,10 +454,10 @@
             this.btnNewAnalysis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewAnalysis.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewAnalysis.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnNewAnalysis.Location = new System.Drawing.Point(317, 22);
+            this.btnNewAnalysis.Location = new System.Drawing.Point(317, 17);
             this.btnNewAnalysis.Margin = new System.Windows.Forms.Padding(20, 4, 20, 4);
             this.btnNewAnalysis.Name = "btnNewAnalysis";
-            this.btnNewAnalysis.Size = new System.Drawing.Size(257, 32);
+            this.btnNewAnalysis.Size = new System.Drawing.Size(257, 41);
             this.btnNewAnalysis.TabIndex = 5;
             this.btnNewAnalysis.Text = "Run New Analysis";
             this.btnNewAnalysis.UseVisualStyleBackColor = true;
@@ -475,7 +476,7 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel6, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(13, 27);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(13, 42);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
@@ -490,8 +491,8 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.btnSelectResults, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnNewAnalysis, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnSelectResults, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(1, 1);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(1);
@@ -501,29 +502,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(594, 76);
             this.tableLayoutPanel4.TabIndex = 7;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnOpenImageNewWindow);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(597, 1);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(594, 37);
-            this.flowLayoutPanel1.TabIndex = 9;
-            // 
-            // btnOpenImageNewWindow
-            // 
-            this.btnOpenImageNewWindow.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnOpenImageNewWindow.Location = new System.Drawing.Point(409, 1);
-            this.btnOpenImageNewWindow.Margin = new System.Windows.Forms.Padding(1);
-            this.btnOpenImageNewWindow.Name = "btnOpenImageNewWindow";
-            this.btnOpenImageNewWindow.Size = new System.Drawing.Size(184, 35);
-            this.btnOpenImageNewWindow.TabIndex = 0;
-            this.btnOpenImageNewWindow.Text = "Open in New Window";
-            this.btnOpenImageNewWindow.UseVisualStyleBackColor = true;
-            this.btnOpenImageNewWindow.Click += new System.EventHandler(this.openImagesInNewWindowToolStripMenuItem_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -554,7 +532,7 @@
             "Blue",
             "Purple",
             "Gray"});
-            this.FlagComboBox.Location = new System.Drawing.Point(1, 5);
+            this.FlagComboBox.Location = new System.Drawing.Point(1, 8);
             this.FlagComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.FlagComboBox.Name = "FlagComboBox";
             this.FlagComboBox.Size = new System.Drawing.Size(86, 26);
@@ -589,6 +567,29 @@
             this.btnClearFlag.UseVisualStyleBackColor = true;
             this.btnClearFlag.Click += new System.EventHandler(this.btnClearFlag_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnOpenImageNewWindow);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(597, 1);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(594, 37);
+            this.flowLayoutPanel1.TabIndex = 9;
+            // 
+            // btnOpenImageNewWindow
+            // 
+            this.btnOpenImageNewWindow.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnOpenImageNewWindow.Location = new System.Drawing.Point(358, 1);
+            this.btnOpenImageNewWindow.Margin = new System.Windows.Forms.Padding(1);
+            this.btnOpenImageNewWindow.Name = "btnOpenImageNewWindow";
+            this.btnOpenImageNewWindow.Size = new System.Drawing.Size(235, 35);
+            this.btnOpenImageNewWindow.TabIndex = 0;
+            this.btnOpenImageNewWindow.Text = "Open in New Window";
+            this.btnOpenImageNewWindow.UseVisualStyleBackColor = true;
+            this.btnOpenImageNewWindow.Click += new System.EventHandler(this.openImagesInNewWindowToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -620,9 +621,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -659,15 +660,15 @@
         private System.Windows.Forms.ComboBox FlagComboBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnClearFlag;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Flag;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Checked;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Image;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Score;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnOpenImageNewWindow;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Flag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Checked;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Image;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Score;
     }
 }

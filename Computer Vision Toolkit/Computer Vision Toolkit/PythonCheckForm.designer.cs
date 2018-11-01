@@ -39,9 +39,9 @@
             this.infoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.infoLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.infoLabel.Location = new System.Drawing.Point(12, 9);
+            this.infoLabel.Location = new System.Drawing.Point(12, 18);
             this.infoLabel.Name = "infoLabel";
-            this.infoLabel.Size = new System.Drawing.Size(325, 59);
+            this.infoLabel.Size = new System.Drawing.Size(401, 59);
             this.infoLabel.TabIndex = 0;
             this.infoLabel.Text = "Please wait while we search for python...";
             this.infoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -52,9 +52,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pythonLink.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pythonLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pythonLink.Location = new System.Drawing.Point(12, 75);
+            this.pythonLink.Location = new System.Drawing.Point(12, 85);
             this.pythonLink.Name = "pythonLink";
-            this.pythonLink.Size = new System.Drawing.Size(211, 19);
+            this.pythonLink.Size = new System.Drawing.Size(287, 35);
             this.pythonLink.TabIndex = 1;
             this.pythonLink.TabStop = true;
             this.pythonLink.Text = "Python 3.6.4 Download Page";
@@ -65,9 +65,9 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Enabled = false;
-            this.btnClose.Location = new System.Drawing.Point(250, 71);
+            this.btnClose.Location = new System.Drawing.Point(305, 86);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(87, 27);
+            this.btnClose.Size = new System.Drawing.Size(87, 32);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 110);
+            this.ClientSize = new System.Drawing.Size(425, 145);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pythonLink);
             this.Controls.Add(this.infoLabel);
@@ -85,7 +85,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(365, 110);
+            this.MinimumSize = new System.Drawing.Size(441, 184);
             this.Name = "PythonCheckForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Validating Python Install";
