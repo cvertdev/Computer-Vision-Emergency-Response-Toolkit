@@ -39,6 +39,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4E4DA446CA364566A820B8CFD6B0FEC3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_554A136BB7D54969AE10A729A3D25E4A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -106,6 +112,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A67B6BA0A5084C5EBE82B0F12320BAC9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BA093C692CB54E6EB7C4345D24A37DCA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -343,6 +355,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4E4DA446CA364566A820B8CFD6B0FEC3"
+            {
+            "SourcePath" = "8:..\\Computer Vision Toolkit\\lib\\Algorithms\\pretrained_aod_net_numpy.npy"
+            "TargetName" = "8:pretrained_aod_net_numpy.npy"
+            "Tag" = "8:"
+            "Folder" = "8:_A6C6C8A2336F42A19EE5A340756D34FF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_554A136BB7D54969AE10A729A3D25E4A"
             {
             "SourcePath" = "8:..\\Computer Vision Toolkit\\lib\\Assets\\icon.ico"
@@ -549,6 +581,26 @@
             "TargetName" = "8:timer.py"
             "Tag" = "8:"
             "Folder" = "8:_98C84A43FD2D4B2FA6D40FB3CD30A551"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BA093C692CB54E6EB7C4345D24A37DCA"
+            {
+            "SourcePath" = "8:..\\Computer Vision Toolkit\\lib\\Algorithms\\AODNet.py"
+            "TargetName" = "8:AODNet.py"
+            "Tag" = "8:"
+            "Folder" = "8:_A6C6C8A2336F42A19EE5A340756D34FF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -839,7 +891,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Computer Vision Emergency Response Toolkit"
         "ProductCode" = "8:{EDC0C82D-AD07-47C5-B6F0-32717DEB810C}"
-        "PackageCode" = "8:{0FAA7E40-743C-4764-972A-F83722295D32}"
+        "PackageCode" = "8:{F860383B-BBE3-4486-B8AF-C188457B7D2F}"
         "UpgradeCode" = "8:{C6CD987E-EA19-4AF9-B0AB-CFAABFAD1B5A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
