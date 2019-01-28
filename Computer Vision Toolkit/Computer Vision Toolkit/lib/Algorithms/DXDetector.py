@@ -65,7 +65,7 @@ def DebrisDetect(img_path, Params):
 
 	#img = cv2.imread(img_path)
 	if isinstance(img_path, str):
-		img = cv2.imread( img_path )
+		img = cv2.imread( img_path, cv.IMREAD_COLOR )
 	else:
 		img = img_path
 

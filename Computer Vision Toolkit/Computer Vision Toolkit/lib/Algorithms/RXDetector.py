@@ -35,27 +35,32 @@ def RXD( image_file, Params):
 
 	#Read the input image
 	if isinstance(image_file, str):
-		src_img = cv.imread( image_file )
+		src_img = cv.imread( image_file, cv.IMREAD_COLOR )
 	else:
 		src_img = image_file
 
-	#Calculate the rx scores for the image
-	rx_scores = spc.rx(src_img)
+	try:
+		#Calculate the rx scores for the image
+		rx_scores = spc.rx(src_img)
 
-	#Apply a threshold to the rx scores using the chi-square percent point function
-	rx_chi = chi2.ppf( chi_threshold, src_img.shape[-1])
+		#Apply a threshold to the rx scores using the chi-square percent point function
+		rx_chi = chi2.ppf( chi_threshold, src_img.shape[-1])
 
-	#Create a mask with the threshold values
-	rx_mask = (1 * (rx_scores > rx_chi))
+		#Create a mask with the threshold values
+		rx_mask = (1 * (rx_scores > rx_chi))
 
-	#Apply the mask to the raw rx_scores
-	rx_mask = rx_mask * rx_scores
+		#Apply the mask to the raw rx_scores
+		rx_mask = rx_mask * rx_scores
 
-	#Percentage of anomalies above the annomaly_threshold
-	stats = ((rx_mask >= anomaly_threshold).sum() / rx_mask.size ) * 100.0
+		#Percentage of anomalies above the annomaly_threshold
+		stats = ((rx_mask >= anomaly_threshold).sum() / rx_mask.size ) * 100.0
 
-	#Map the reuslting scores into a 0-255 range. This is required to get apply an accurate heatmap. Otherwise, values may overflow and the cooresponding color value will be wrong.
-	rx_mask = np.interp(rx_mask, [np.min(rx_mask), np.max(rx_mask)], [0, 255])
+		#Map the reuslting scores into a 0-255 range. This is required to get apply an accurate heatmap. Otherwise, values may overflow and the cooresponding color value will be wrong.
+		rx_mask = np.interp(rx_mask, [np.min(rx_mask), np.max(rx_mask)], [0, 255])
+
+	except Exception as e:
+		rx_mask = np.zeros(src_img.shape[:2])
+		stats = 0
 
 	t.stop()
 

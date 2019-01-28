@@ -19,7 +19,7 @@ from status import status, log
 # Import algorithm libraries
 from Algorithms.RXDetector import RXD
 from Algorithms.DXDetector import DebrisDetect
-
+from Algorithms.AODNet import Dehaze
 
 
 
@@ -46,20 +46,23 @@ Params = {
 
 #List of aglorithm functions
 Alg_List = { 
-    'RXD':RXD,
-    'DebrisDetect':DebrisDetect
+	'RXD':RXD,
+    'DebrisDetect':DebrisDetect,
+	'Dehaze':Dehaze
     
     }
 
 Alg_Order = {
-	'RXD':1,
-    'DebrisDetect':2
+	'RXD':2,
+    'DebrisDetect':3,
+	'Dehaze':1
    
 	}
 
 Alg_Pipe = {
     'RXD':0,
-    'DebrisDetect':0
+    'DebrisDetect':0,
+	'Dehaze':0
    
     }
 
@@ -119,7 +122,7 @@ def algorithms(image_path, apply_heatmap=True, range_min=0, range_max=255, scale
     
 	#Read image from an object or file path
 	if isinstance(image_path, str):
-		image = cv.imread( image_path )
+		image = cv.imread( image_path, cv.IMREAD_COLOR )
 	else:
 		image = image_path
 
@@ -132,21 +135,27 @@ def algorithms(image_path, apply_heatmap=True, range_min=0, range_max=255, scale
 	scores = np.zeros(image.shape[:2])
 	time = float(0)
 	stats = float(0)
+
+	#Create the unused image list
+	unused_images = []
     
 	#--------------------------------------------------------------------------------------------------------
 	#--------------------------------------------------------------------------------------------------------
 
 	#Sort the algorithms to use by the order saved by the user. This is stored in the 'algorithms.ini' file
 	alg_sorted = sorted(Alg_Order.items(), key=lambda kv: kv[1], reverse=False)
-
+	
     #Run the algorithms
     #for alg in Alg_List.items():
 	for alg in alg_sorted:
-		
-		if alg[0] in Alg_List and alg[1] != -1:
-			if alg[0] in Alg_Pipe and Alg_Pipe[alg[0]] == 1:
-				rtn = Alg_List[alg[0]](image, Params)
+		if alg[0] in Alg_List and alg[1] != -1:		#Check if this algorithm will be run
 
+			if alg[0] is 'Dehaze':		#The Dehaze algorithm always requires it to be piped into another algorithm
+				Alg_Pipe[alg[0]] = 1
+
+			if alg[0] in Alg_Pipe and Alg_Pipe[alg[0]] == 1:	#Check if this algorithm's results need to be piped into other algorithms
+				rtn = Alg_List[alg[0]](image, Params)
+				
 				#Convert a 2D matrix of scores into a grayscale 3 channel image
 				if len(rtn[0].shape) < 3:
 					image = cv.applyColorMap( rtn[0].astype(np.uint8), cv.COLORMAP_BONE )
@@ -158,8 +167,12 @@ def algorithms(image_path, apply_heatmap=True, range_min=0, range_max=255, scale
 				rtn = Alg_List[alg[0]](image, Params)
 
 			#Add the current algorithm's results to the overall results
-			scores += rtn[0]
+			if len(rtn[0].shape) < 3:
+				scores += rtn[0]
+			else:
+				unused_images.append(rtn[0])
 			
+
 			#Add the current algorithm's completion time and statistics
 			time += rtn[1]
 			stats += rtn[2]
@@ -171,7 +184,7 @@ def algorithms(image_path, apply_heatmap=True, range_min=0, range_max=255, scale
 	scores = np.interp(scores, [np.min(scores),np.max(scores)], [range_min, range_max])
 
 	#Return the results
-	return scores, time, stats
+	return scores, time, stats, unused_images
 
 
 
@@ -214,13 +227,15 @@ def run_analysis(args):
 	else:
         
 		#Call the algorithms
-		final_scores, final_time, final_stats = algorithms(img)
+		final_scores, final_time, final_stats, unused_images = algorithms(img)
 
 		#--------------------------------------------------------------------------------------------------------
 		#--------------------------------------------------------------------------------------------------------
 
-		#Apply colormap to the combined heatmap
-		final_heatmap = cv.applyColorMap( final_scores.astype(np.uint8), cv.COLORMAP_JET )
+		#Apply colormap to the combined heatmap if it is not already a color image
+		if len(final_scores.shape) < 3:
+			final_heatmap = cv.applyColorMap( final_scores.astype(np.uint8), cv.COLORMAP_JET )
+		
 
 		#--------------------------------------------------------------------------------------------------------
 		#--------------------------------------------------------------------------------------------------------
@@ -240,7 +255,17 @@ def run_analysis(args):
 			log(batch_log, '-o-', results_str)
 			log(other_log, '-o-', results_str)
 			#cv.imwrite(os.path.join( other_folder, img_name + ".jpg"), final_heatmap)
-			cv.imwrite(os.path.join(  batch_path, "Other", img_name + ".jpg"), final_heatmap)           
+			cv.imwrite(os.path.join(  batch_path, "Other", img_name + ".jpg"), final_heatmap)      
+			
+		#Save any resulting images from the algorithms that couldn't be used to produce the heatmap
+		ct = 1
+		for u_img in unused_images:
+			results_str = "An unused image was detected. Image saved to 'Other' folder."
+			status( '-i-', results_str)
+			log(batch_log, '-i-', results_str)
+			log(other_log, '-i-', results_str)
+			cv.imwrite(os.path.join(  batch_path, "Other", img_name + "_UNUSED_" + str(ct) + ".jpg"), u_img)    
+			ct += 1
 
 	batch_log.close()
 	detected_log.close()
