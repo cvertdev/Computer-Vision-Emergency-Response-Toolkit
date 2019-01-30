@@ -22,6 +22,9 @@ def status(flag, in_str=None):
     if flag == '-o-':	#Other
         print("{0} {1} {2:.6f} sec {3:.6f}%".format( flag, in_str[0], in_str[1], in_str[2]) )
 
+    if flag == '-m-':	#Modified Original
+        print("{0} {1} {2:.6f} sec {3}".format( flag, in_str[0], in_str[1], in_str[2]) )
+
     if flag == '-v-':
         print("{0} {1} {2:.6f} sec {3:.6f}%".format( flag, in_str[0], in_str[1], in_str[2]) )
 
@@ -59,6 +62,9 @@ def log(fd, flag=None, in_str=None):
 
     if flag == '-o-':	#Other
         fd.write("{0} {1} {2:.6f} {3:.6f}\n".format( flag, in_str[0], in_str[1], in_str[2]) )
+
+    if flag == '-m-':	#Modified Original
+        fd.write("{0} {1} {2:.6f} {3}\n".format( flag, in_str[0], in_str[1], in_str[2]) )
 
     if flag == '-v-':	#Video
         fd.write("{0} {1} {2:.6f} {3:.6f}\n".format( flag, in_str[0], in_str[1], in_str[2]) )

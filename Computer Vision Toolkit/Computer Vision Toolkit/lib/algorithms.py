@@ -138,7 +138,7 @@ def algorithms(image_path, apply_heatmap=True, range_min=0, range_max=255, scale
 
 	#Create the unused image list
 	unused_images = []
-    
+
 	#--------------------------------------------------------------------------------------------------------
 	#--------------------------------------------------------------------------------------------------------
 
@@ -225,7 +225,7 @@ def run_analysis(args):
 		log(detected_log, '-v-', rtn_str )
 
 	else:
-        
+
 		#Call the algorithms
 		final_scores, final_time, final_stats, unused_images = algorithms(img)
 
@@ -247,7 +247,7 @@ def run_analysis(args):
 			log(batch_log, '-d-', results_str)
 			log(detected_log, '-d-', results_str)
 			#cv.imwrite(os.path.join( detected_folder, img_name + ".jpg"), final_heatmap)
-			cv.imwrite(os.path.join( batch_path, "Detected", img_name + ".jpg"), final_heatmap)        
+			cv.imwrite(os.path.join( batch_path, "Analyzed", img_name + ".jpg"), final_heatmap)        
 
 		else:
 			results_str = [ img_name, final_time, final_stats ]
@@ -255,16 +255,16 @@ def run_analysis(args):
 			log(batch_log, '-o-', results_str)
 			log(other_log, '-o-', results_str)
 			#cv.imwrite(os.path.join( other_folder, img_name + ".jpg"), final_heatmap)
-			cv.imwrite(os.path.join(  batch_path, "Other", img_name + ".jpg"), final_heatmap)      
+			cv.imwrite(os.path.join(  batch_path, "Other Analyzed", img_name + ".jpg"), final_heatmap)      
 			
 		#Save any resulting images from the algorithms that couldn't be used to produce the heatmap
 		ct = 1
 		for u_img in unused_images:
-			results_str = "An unused image was detected. Image saved to 'Other' folder."
-			status( '-i-', results_str)
-			log(batch_log, '-i-', results_str)
-			log(other_log, '-i-', results_str)
-			cv.imwrite(os.path.join(  batch_path, "Other", img_name + "_UNUSED_" + str(ct) + ".jpg"), u_img)    
+			results_str = [ img_name, final_time, "Modified Original" ]
+			status( '-i-', "An unused image was detected. Image saved to 'Modified Original' folder.")
+			status( '-m-', results_str)
+			log(batch_log, '-m-', results_str)
+			cv.imwrite(os.path.join(  batch_path, "Modified Original", img_name + ".jpg"), u_img)    
 			ct += 1
 
 	batch_log.close()
@@ -287,7 +287,7 @@ def analyzeVideo(args):
 	vid_capture = cv.VideoCapture(video_path)
 	success, frame = vid_capture.read()
 	size = (frame.shape[1],frame.shape[0])
-    
+
 	count = 0
 	success = True
 
@@ -321,11 +321,11 @@ def analyzeVideo(args):
 			cv.resizeWindow('Generating Video Heatmap - Press ESCAPE to close', (500, 375))
 			cv.imshow('Generating Video Heatmap - Press ESCAPE to close', heatmap_frame)
 			key_pressed = cv.waitKey(1)
-        
+
 		if key_pressed == 27:
 			show_progress = False
 			cv.destroyAllWindows()
-        
+
 	cv.destroyAllWindows()
 	out.release()
 	return os.path.join( vid_name + '_heatmap.mp4')

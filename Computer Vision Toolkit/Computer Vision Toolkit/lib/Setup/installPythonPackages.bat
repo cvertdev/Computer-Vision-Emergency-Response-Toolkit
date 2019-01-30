@@ -1,21 +1,21 @@
 ::  Install the python libraries with pip
 ::  openCV
-pip3 install opencv-python opencv-contrib-python
+pip3 install -v opencv-python opencv-contrib-python
 ::  NumPy
-pip3 install numpy
+pip3 install -v numpy
 ::  SciPy
-pip3 install scipy
+pip3 install -v scipy
 ::  Scikit-Learn
-pip3 install scikit-learn
+pip3 install -v scikit-learn
 ::  Spectral Python
-pip3 install spectral
+pip3 install -v spectral
 ::  Matplotlib
-pip3 install matplotlib
+pip3 install -v matplotlib
 
 ::====================================================================================
 ::--------------------For new algorithms add the new packages here--------------------
 ::====================================================================================
-::Use: 'pip3 install <Package_Name>'
+::Use: 'pip3 install -v <Package_Name>'
 
 
 
