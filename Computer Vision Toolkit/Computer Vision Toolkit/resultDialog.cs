@@ -90,7 +90,7 @@ namespace Computer_Vision_Toolkit
                 for (int i = 0; i < directories.Length; i++)
                 {
                     int num_checked = System.IO.File.ReadAllLines(directories[i] + @"\checkbox.ini").Count<string>();
-                    int num_total = System.IO.Directory.GetFiles(directories[i] + @"\Detected").Count<string>();
+                    int num_total = System.IO.Directory.GetFiles(directories[i] + @"\Analyzed").Count<string>();
 
                     dataGridView1.Rows.Add( System.IO.Path.GetFileName(directories[i]), num_checked, num_total );
                 }

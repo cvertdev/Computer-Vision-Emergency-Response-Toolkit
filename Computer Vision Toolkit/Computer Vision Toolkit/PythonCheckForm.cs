@@ -64,6 +64,7 @@ namespace Computer_Vision_Toolkit
         public StatusLog slog = new StatusLog();
 
         private Settings settings;
+        private Process installProcess;
         private bool is_python_installed = false;
         private string[] default_python_path = { "%windir%\\py.exe", "%LocalAppData%\\Programs\\Python\\Python36\\python.exe", "%LocalAppData%\\Programs\\Python\\Python36-32\\python.exe", "%ProgramFiles%\\Python 3.6\\python.exe", "%ProgramFiles(x86)%\\Python 3.6\\python.exe" };
 
@@ -140,7 +141,7 @@ namespace Computer_Vision_Toolkit
                     //Check/Install required packages
                     Invoke(new Info(UpdateInfo), "Checking Python version...");
                     string python_version = Process.Start(new ProcessStartInfo { FileName = Path.Combine(Environment.CurrentDirectory, "lib\\Setup\\checkPythonVersion.bat"), CreateNoWindow = true, UseShellExecute = false, RedirectStandardOutput = true }).StandardOutput.ReadToEnd();
-                    if (python_version.Contains("Python 3.6")) // || python_version.Contains("Python 3.7")
+                    if (python_version.Contains("Python 3.6") || python_version.Contains("Python 3.7"))
                     {
                         Invoke(new Info(UpdateInfo), "Checking Python version......OK");
 
@@ -180,7 +181,33 @@ namespace Computer_Vision_Toolkit
                             {
                                 Invoke(new Info(UpdateInfo), "Installing " + str + "...");
                                 Invoke(new Bool(SetWaitCursor), true);
-                                Process.Start(new ProcessStartInfo { FileName = Path.Combine(Environment.CurrentDirectory, "lib\\Setup\\installPythonPackages.bat"), CreateNoWindow = true, UseShellExecute = false }).WaitForExit();
+                                //Process.Start(new ProcessStartInfo { FileName = Path.Combine(Environment.CurrentDirectory, "lib\\Setup\\installPythonPackages.bat"), CreateNoWindow = true, UseShellExecute = false }).WaitForExit();
+                                
+                                //-----------------------------------------------------------
+
+                                ProcessStartInfo startConfig = new ProcessStartInfo(Path.Combine(Environment.CurrentDirectory, "lib\\Setup\\installPythonPackages.bat"));
+                                startConfig.UseShellExecute = false;
+                                startConfig.RedirectStandardOutput = true;
+                                startConfig.RedirectStandardError = true;
+                                startConfig.CreateNoWindow = true;
+
+                                installProcess = new Process { StartInfo = startConfig };
+
+                                //Create output handlers
+                                installProcess.OutputDataReceived += redirectHandler;
+                                installProcess.ErrorDataReceived += redirectHandler;
+                                installProcess.EnableRaisingEvents = true;
+
+                                //Start the python process
+                                installProcess.Start();
+                                installProcess.BeginOutputReadLine();
+                                installProcess.BeginErrorReadLine();
+
+                                //Wait for backend to finish, then clean up
+                                installProcess.WaitForExit();
+
+                                //-----------------------------------------------------------
+
                                 break;
                             }
                         }
@@ -224,6 +251,32 @@ namespace Computer_Vision_Toolkit
                 //MessageBox.Show(err.Message);
             }
         }
+
+        //===================================================================================================================
+        //-------------------------------------------------------------------------------------------------------------------
+        //===================================================================================================================
+
+        public void redirectHandler(object sendingProcess, DataReceivedEventArgs line)
+        {
+            // Collect the sort command output. 
+            if (!string.IsNullOrEmpty(line.Data))
+            {
+                try
+                {
+                    Invoke(new Info(UpdateInfo), line.Data);
+                }
+                catch (Exception err)
+                {
+                    elog.Log(err.TargetSite.ToString(), err.Message);
+                    //MessageBox.Show(err.Message);
+                }
+            }
+        }
+
+        //===================================================================================================================
+        //-------------------------------------------------------------------------------------------------------------------
+        //===================================================================================================================
+
 
         private void pythonLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

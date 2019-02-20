@@ -20,9 +20,11 @@ img_list = []
 parser = ArgumentParser()
 extensions = (".jpg", ".jpeg", ".png", ".mp4")
 
-detected_folder = "Detected"
-other_folder = "Other"
-copy_folder = "Copy"
+analyzed_folder = "Analyzed"
+other_analyzed_folder = "Other Analyzed"
+
+original_folder = "Original"
+modified_original = "Modified Original"
 
 #Analysis Parameters
 total_time = timer.Timer()
@@ -57,15 +59,15 @@ try:
     args = parser.parse_args()
     
     batch_path = args.folderPath
-    copy_folder = os.path.join( batch_path, copy_folder)
+    original_folder = os.path.join( batch_path, original_folder)
 
     #--------------------------------------------------------------------------------------------------------
     #--------------------------------------------------------------------------------------------------------
 
     #Looks in the copy folder and adds the correct file types to the image list
     #This is a case insensitive version
-    if os.path.exists(copy_folder):
-        for file in glob.glob(os.path.join(copy_folder, '*')):
+    if os.path.exists(original_folder):
+        for file in glob.glob(os.path.join(original_folder, '*')):
             ext = os.path.splitext(file)[-1]
             if ext.lower() in extensions:
                 img_list.append( (file, batch_path) )
@@ -81,11 +83,14 @@ try:
     #--------------------------------------------------------------------------------------------------------
 
     #Create the output directory if it does not exist
-    if not os.path.exists(os.path.join( batch_path, detected_folder)):
-        os.makedirs(os.path.join( batch_path, detected_folder))
+    if not os.path.exists(os.path.join( batch_path, analyzed_folder)):
+        os.makedirs(os.path.join( batch_path, analyzed_folder))
 
-    if not os.path.exists(os.path.join( batch_path, other_folder)):
-        os.makedirs(os.path.join( batch_path, other_folder))
+    if not os.path.exists(os.path.join( batch_path, other_analyzed_folder)):
+        os.makedirs(os.path.join( batch_path, other_analyzed_folder))
+
+    if not os.path.exists(os.path.join( batch_path, modified_original)):
+        os.makedirs(os.path.join( batch_path, modified_original))
 
     #Create the log files if they do not exist
     #TODO: Add a time stamp when the file was created

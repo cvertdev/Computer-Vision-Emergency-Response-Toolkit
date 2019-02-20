@@ -72,9 +72,12 @@ namespace Computer_Vision_Toolkit
         private string pythonPath;
         private int fileCt = 0;
         private Process backendProcess;
-        private string copyDir;
-        private string detDir;
-        private string othDir;
+
+        private string copyDir;     //Copy of original images directory
+        private string detDir;      //Analyzed/results images directory
+        private string othDir;      //Other analyzed images directory
+        private string modDir;      //Modified copy of original images directory
+
         private int completed_files_ct = 0;
         private string infoLogStr;
         private int num_threads = 1;
@@ -167,8 +170,11 @@ namespace Computer_Vision_Toolkit
                 Directory.CreateDirectory(copyDir);
                 Directory.CreateDirectory(detDir);
                 Directory.CreateDirectory(othDir);
+                Directory.CreateDirectory(modDir);
+
                 File.Create(currentBatch + @"\batch_log.txt").Close();
                 File.Create(currentBatch + @"\detected_log.txt").Close();
+                File.Create(currentBatch + @"\modified_original_log.txt").Close();      //For future use
                 File.Create(currentBatch + @"\error_log.txt").Close();
                 File.Create(currentBatch + @"\other_log.txt").Close();
                 File.Create(currentBatch + @"\checkbox.ini").Close();
@@ -217,9 +223,10 @@ namespace Computer_Vision_Toolkit
                     btnAnalyze.Enabled = true;
 
                     currentBatch = batchesDirectory + "\\" + batchName;
-                    copyDir = batchesDirectory + "\\" + batchName + "\\Copy";
-                    detDir = batchesDirectory + "\\" + batchName + "\\Detected";
-                    othDir = batchesDirectory + "\\" + batchName + "\\Other";
+                    copyDir = batchesDirectory + "\\" + batchName + "\\Original";
+                    detDir = batchesDirectory + "\\" + batchName + "\\Analyzed";
+                    othDir = batchesDirectory + "\\" + batchName + "\\Other Analyzed";
+                    modDir = batchesDirectory + "\\" + batchName + "\\Modified Original";
 
                     createDirectories();
 
@@ -397,7 +404,8 @@ namespace Computer_Vision_Toolkit
                     lblProgressBar.Text = "Initializing...";
                     lblProgressBar.Update();
 
-                    string pythonArgs = " -3.6 \"" + @workingDirectory + @"\lib\analyze.py" + "\" -F \"" + @currentBatch + "\"" + " -p " + num_threads.ToString();
+                    //string pythonArgs = " -3.6 \"" + @workingDirectory + @"\lib\analyze.py" + "\" -F \"" + @currentBatch + "\"" + " -p " + num_threads.ToString();        //Only supports Python 3.6 versions
+                    string pythonArgs = " -3 \"" + @workingDirectory + @"\lib\analyze.py" + "\" -F \"" + @currentBatch + "\"" + " -p " + num_threads.ToString();
 
                     if (currentBatch != null)
                     {
@@ -501,6 +509,20 @@ namespace Computer_Vision_Toolkit
                             }
 
                         case "-o-":     //Image flagged as other
+                            {
+                                completed_files_ct++;
+                                progressBar1.Visible = true;
+                                progressBar1.Minimum = 0;
+                                //progressBar1.Maximum = total;
+                                progressBar1.Value = Convert.ToInt32(((double)completed_files_ct / (double)fileCt) * 100);
+                                progressBar1.Update();
+                                lblPercent.Text = Convert.ToInt32(((double)completed_files_ct / (double)fileCt) * 100).ToString() + " %";
+                                lblProgressBar.Text = "Analyzing...";
+
+                                break;
+                            }
+
+                        case "-m-":     //Image flagged as modified original
                             {
                                 completed_files_ct++;
                                 progressBar1.Visible = true;

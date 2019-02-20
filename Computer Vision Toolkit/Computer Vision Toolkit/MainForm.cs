@@ -446,7 +446,7 @@ namespace Computer_Vision_Toolkit
                     {
                         if (dataGridView1.SelectedRows != null && checkImages(Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext), 1) == true)
                         {
-                            pictureBox2.ImageLocation = Path.Combine(selectResultsFolder, "Detected", Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext));
+                            pictureBox2.ImageLocation = Path.Combine(selectResultsFolder, "Analyzed", Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext));
                             break;
                         }
                         else
@@ -457,7 +457,7 @@ namespace Computer_Vision_Toolkit
                     {
                         if (dataGridView1.SelectedRows != null && checkImages(Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext), 0) == true)
                         {
-                            pictureBox1.ImageLocation = Path.Combine(selectResultsFolder, "Copy", Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext));
+                            pictureBox1.ImageLocation = Path.Combine(selectResultsFolder, "Original", Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext));
                             break;
                         }
                         else
@@ -479,13 +479,13 @@ namespace Computer_Vision_Toolkit
                     foreach (var ext in extensions)
                         if (dataGridView1.SelectedRows != null && checkImages(Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext), 1) == true)
                         {
-                            Process.Start(Path.Combine(selectResultsFolder, "Detected", Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext)));
+                            Process.Start(Path.Combine(selectResultsFolder, "Analyzed", Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext)));
                         }
 
                     foreach (var ext in extensions)
                         if (dataGridView1.SelectedRows != null && checkImages(Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext), 0) == true)
                         {
-                            Process.Start(Path.Combine(selectResultsFolder, "Copy", Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext)));
+                            Process.Start(Path.Combine(selectResultsFolder, "Original", Path.ChangeExtension(dataGridView1.SelectedRows[0].Cells["Image"].Value.ToString(), ext)));
                         }
                 }
             }
@@ -541,7 +541,7 @@ namespace Computer_Vision_Toolkit
                     this.loadImages();
 
                     //Allows the user to view a batch folder that is currently being analyzed
-                    FileSystemWatcher watcher = new FileSystemWatcher(Path.Combine(selectResultsFolder, "Detected"));
+                    FileSystemWatcher watcher = new FileSystemWatcher(Path.Combine(selectResultsFolder, "Analyzed"));
                     watcher.EnableRaisingEvents = true;
                     watcher.NotifyFilter = NotifyFilters.LastWrite;
                     //watcher.Created += Watcher_Created;
@@ -620,9 +620,9 @@ namespace Computer_Vision_Toolkit
         private bool checkImages(string image, int val)
         {
             if(val == 0)
-                return (File.Exists(Path.Combine(selectResultsFolder, "Copy", image)));
+                return (File.Exists(Path.Combine(selectResultsFolder, "Original", image)));
             if(val == 1)
-                return (File.Exists(Path.Combine(selectResultsFolder, "Detected", image)));
+                return (File.Exists(Path.Combine(selectResultsFolder, "Analyzed", image)));
 
             return false;
         }
@@ -640,7 +640,7 @@ namespace Computer_Vision_Toolkit
                 flagged_images = ReadFlagged(selectResultsFolder);
                 image_stats = ReadImageStats(selectResultsFolder);
 
-                String combined = System.IO.Path.Combine(selectResultsFolder, "Detected");
+                String combined = System.IO.Path.Combine(selectResultsFolder, "Analyzed");
                 string[] temp = Directory.GetFiles(combined);
 
                 //Reset current images and checkbox
@@ -707,7 +707,7 @@ namespace Computer_Vision_Toolkit
         {
             try
             {
-                String combined = System.IO.Path.Combine(selectResultsFolder, "Detected");
+                String combined = System.IO.Path.Combine(selectResultsFolder, "Analyzed");
                 string[] temp = Directory.GetFiles(combined);
 
                 //Update image stats
