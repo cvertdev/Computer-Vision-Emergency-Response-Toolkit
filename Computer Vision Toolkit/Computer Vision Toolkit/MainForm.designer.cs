@@ -49,8 +49,6 @@
             this.menuOptimizedMode = new System.Windows.Forms.ToolStripMenuItem();
             this.viewingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.analysisToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxLegend = new System.Windows.Forms.PictureBox();
@@ -62,6 +60,8 @@
             this.Image = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_Info = new System.Windows.Forms.Label();
+            this.imageBoxOriginal = new Cyotek.Windows.Forms.ImageBox();
+            this.imageBoxResult = new Cyotek.Windows.Forms.ImageBox();
             this.btnMarkAsViewed = new System.Windows.Forms.Button();
             this.btnSelectResults = new System.Windows.Forms.Button();
             this.btnNewAnalysis = new System.Windows.Forms.Button();
@@ -74,8 +74,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnOpenImageNewWindow = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLegend)).BeginInit();
@@ -222,38 +220,6 @@
             this.analysisToolStripMenuItem1.Text = "Analysis";
             this.analysisToolStripMenuItem1.Click += new System.EventHandler(this.analysisToolStripMenuItem_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1, 5, 1, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(594, 522);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(597, 5);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(1, 5, 1, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(594, 522);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
-            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
-            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
-            this.pictureBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -264,11 +230,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbl_Info, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.imageBoxOriginal, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.imageBoxResult, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 122);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -422,6 +388,40 @@
             this.lbl_Info.Size = new System.Drawing.Size(112, 18);
             this.lbl_Info.TabIndex = 8;
             this.lbl_Info.Text = "Mouse Position";
+            // 
+            // imageBoxOriginal
+            // 
+            this.imageBoxOriginal.BackColor = System.Drawing.Color.DimGray;
+            this.imageBoxOriginal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.imageBoxOriginal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.imageBoxOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imageBoxOriginal.GridColor = System.Drawing.Color.DimGray;
+            this.imageBoxOriginal.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
+            this.imageBoxOriginal.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.imageBoxOriginal.Location = new System.Drawing.Point(3, 3);
+            this.imageBoxOriginal.Name = "imageBoxOriginal";
+            this.imageBoxOriginal.Size = new System.Drawing.Size(590, 522);
+            this.imageBoxOriginal.TabIndex = 9;
+            this.imageBoxOriginal.TabStop = false;
+            this.imageBoxOriginal.Zoomed += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxZoomEventArgs>(this.imageBoxOriginal_Zoomed);
+            this.imageBoxOriginal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imageBoxOriginal_MouseMove);
+            // 
+            // imageBoxResult
+            // 
+            this.imageBoxResult.BackColor = System.Drawing.Color.DimGray;
+            this.imageBoxResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.imageBoxResult.Cursor = System.Windows.Forms.Cursors.Default;
+            this.imageBoxResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imageBoxResult.GridColor = System.Drawing.Color.DimGray;
+            this.imageBoxResult.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
+            this.imageBoxResult.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.imageBoxResult.Location = new System.Drawing.Point(599, 3);
+            this.imageBoxResult.Name = "imageBoxResult";
+            this.imageBoxResult.Size = new System.Drawing.Size(590, 522);
+            this.imageBoxResult.TabIndex = 10;
+            this.imageBoxResult.TabStop = false;
+            this.imageBoxResult.Zoomed += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxZoomEventArgs>(this.imageBoxResult_Zoomed);
+            this.imageBoxResult.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imageBoxResult_MouseMove);
             // 
             // btnMarkAsViewed
             // 
@@ -611,8 +611,6 @@
             this.Text = "Computer Vision Emergency Response Toolkit";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -634,8 +632,6 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuBtnSelectResults;
         private System.Windows.Forms.ToolStripMenuItem menuBtnNewAnalysis;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBoxLegend;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -670,5 +666,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Checked;
         private System.Windows.Forms.DataGridViewTextBoxColumn Image;
         private System.Windows.Forms.DataGridViewTextBoxColumn Score;
+        private Cyotek.Windows.Forms.ImageBox imageBoxOriginal;
+        private Cyotek.Windows.Forms.ImageBox imageBoxResult;
     }
 }
