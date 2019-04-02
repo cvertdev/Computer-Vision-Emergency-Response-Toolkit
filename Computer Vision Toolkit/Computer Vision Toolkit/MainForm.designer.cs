@@ -404,6 +404,8 @@
             this.imageBoxOriginal.TabIndex = 9;
             this.imageBoxOriginal.TabStop = false;
             this.imageBoxOriginal.Zoomed += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxZoomEventArgs>(this.imageBoxOriginal_Zoomed);
+            this.imageBoxOriginal.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.imageBoxOriginal_MouseWheel);
+            this.imageBoxOriginal.Paint += new System.Windows.Forms.PaintEventHandler(this.imageBoxOriginal_Paint);
             this.imageBoxOriginal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imageBoxOriginal_MouseMove);
             // 
             // imageBoxResult
@@ -421,6 +423,8 @@
             this.imageBoxResult.TabIndex = 10;
             this.imageBoxResult.TabStop = false;
             this.imageBoxResult.Zoomed += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxZoomEventArgs>(this.imageBoxResult_Zoomed);
+            this.imageBoxResult.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.imageBoxResult_MouseWheel);
+            this.imageBoxResult.Paint += new System.Windows.Forms.PaintEventHandler(this.imageBoxResult_Paint);
             this.imageBoxResult.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imageBoxResult_MouseMove);
             // 
             // btnMarkAsViewed

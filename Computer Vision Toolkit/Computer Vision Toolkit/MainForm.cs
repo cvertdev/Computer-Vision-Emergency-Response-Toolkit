@@ -961,7 +961,7 @@ namespace Computer_Vision_Toolkit
                 mouse_y = e.Y;
 
                 //Update lbl_Info with mouse positions
-//                lbl_Info.Text = string.Format("( {0}, {1} )", mouse_x, mouse_y);
+                //                lbl_Info.Text = string.Format("( {0}, {1} )", mouse_x, mouse_y);
             }
             catch (Exception err)
             {
@@ -979,7 +979,7 @@ namespace Computer_Vision_Toolkit
                 mouse_y = e.Y;
 
                 //Update lbl_Info with mouse positions
-//                lbl_Info.Text = string.Format("( {0}, {1} )", mouse_x, mouse_y);
+                //                lbl_Info.Text = string.Format("( {0}, {1} )", mouse_x, mouse_y);
             }
             catch (Exception err)
             {
@@ -991,15 +991,25 @@ namespace Computer_Vision_Toolkit
         //===================================================================================================================
         //-------------------------------------------------------------------------------------------------------------------
         //===================================================================================================================
+        public bool isResultMouseWheel;
+        public bool isOriginalMouseWheel;
+        private void imageBoxResult_MouseWheel(object sender, MouseEventArgs e)
+        {
+            //isResultMouseWheel = true;
+        }
+
+        private void imageBoxOriginal_MouseWheel(object sender, MouseEventArgs e)
+        {
+            //isOriginalMouseWheel = true;
+        }
+
+        //===================================================================================================================
+        //-------------------------------------------------------------------------------------------------------------------
+        //===================================================================================================================
 
         private void imageBoxResult_Zoomed(object sender, ImageBoxZoomEventArgs e)
         {
-            imageBoxResult.Zoom = e.NewZoom;
-            imageBoxOriginal.Zoom = e.NewZoom;
-            //imageBoxOriginal.Zoom = imageBoxResult.Zoom;
-
-            lbl_Info.Text = string.Format("{0}, {1}", imageBoxResult.Zoom, imageBoxOriginal.Zoom);
-
+            imageBoxOriginal.Zoom = imageBoxResult.Zoom;
         }
 
         private void imageBoxOriginal_Zoomed(object sender, ImageBoxZoomEventArgs e)
@@ -1007,247 +1017,27 @@ namespace Computer_Vision_Toolkit
             imageBoxResult.Zoom = imageBoxOriginal.Zoom;
         }
 
-        /*        //Mouse moved over pictureBox2
-                private void pictureBox_MouseMove(object sender, MouseEventArgs e)
-                {
-                    try
-                    {
-                        //Update mouse positions
-                        mouse_x = e.X;
-                        mouse_y = e.Y;
-
-                        if ( pbox1_left || pbox2_left || pbox1_right || pbox2_right )
-                            if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
-                            {
-                                int size = 90;
-                                int offset = size / 2;
-                                float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                                int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                                int height_offset = (pictureBox1.Height - expected_height) / 2;
-
-                                path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-                                pictureBox1.Invalidate();
-                                pictureBox2.Invalidate();
-                            }
-
-                        //Update lbl_Info with mouse positions
-                        lbl_Info.Text = string.Format("( {0}, {1} )", mouse_x, mouse_y);
-                    }
-                    catch (Exception err)
-                    {
-                        elog.Log(err.TargetSite.ToString(), err.Message);
-                        //MessageBox.Show(err.Message);
-                    }
-
-                }
-        */
+        
         //===================================================================================================================
-        //----------------------------------------------Mouse Click Handlers--------------------------------------------------
+        //--------------------------------------------------OnPaint Handlers-------------------------------------------------
         //===================================================================================================================
-        /*
-                private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-                {
-                    try
-                    {
-                        //Update mouse positions
-                        mouse_x = e.X;
-                        mouse_y = e.Y;
 
-                        int size = 90;
-                        int offset = size / 2;
-                        float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                        int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                        int height_offset = (pictureBox1.Height - expected_height) / 2;             
+        private void imageBoxResult_Paint(object sender, PaintEventArgs e)
+        {
+            if(imageBoxResult.IsPanning)// || isResultMouseWheel)
+                imageBoxOriginal.ScrollTo(imageBoxResult.HorizontalScroll.Value, imageBoxResult.VerticalScroll.Value);
+            //isResultMouseWheel = false;
+            lbl_Info.Text = string.Format("{0}, {1} | {2}, {3}", imageBoxOriginal.HorizontalScroll.Value, imageBoxOriginal.VerticalScroll.Value, imageBoxResult.HorizontalScroll.Value, imageBoxResult.VerticalScroll.Value);
+        }
 
-                        if (e.Button == MouseButtons.Left)
-                        {
-                            pbox1_left = true;
-                        }
+        private void imageBoxOriginal_Paint(object sender, PaintEventArgs e)
+        {
+            if(imageBoxOriginal.IsPanning)// || isOriginalMouseWheel)
+                imageBoxResult.ScrollTo(imageBoxOriginal.HorizontalScroll.Value, imageBoxOriginal.VerticalScroll.Value);
+            //isOriginalMouseWheel = false;
+            lbl_Info.Text = string.Format("{0}, {1} | {2}, {3}", imageBoxOriginal.HorizontalScroll.Value, imageBoxOriginal.VerticalScroll.Value, imageBoxResult.HorizontalScroll.Value, imageBoxResult.VerticalScroll.Value);
+        }
 
-                        if (e.Button == MouseButtons.Right)
-                        {
-                            pbox1_right = true;
-                            path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-                        }
-
-                        pictureBox1.Invalidate();
-                        pictureBox2.Invalidate();
-                    }
-                    catch (Exception err)
-                    {
-                        elog.Log(err.TargetSite.ToString(), err.Message);
-                        //MessageBox.Show(err.Message);
-                    }
-                }
-        */
-        //===================================================================================================================
-        //----------------------------------------------Mouse Click Handlers--------------------------------------------------
-        //===================================================================================================================
-        /*
-                private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
-                {
-                    try
-                    {
-                        //Update mouse positions
-                        mouse_x = e.X;
-                        mouse_y = e.Y;
-
-                        int size = 90;
-                        int offset = size / 2;
-                        float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                        int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                        int height_offset = (pictureBox1.Height - expected_height) / 2;
-
-                        if (e.Button == MouseButtons.Left)
-                        {
-                            pbox2_left = true;
-                        }
-
-                        if (e.Button == MouseButtons.Right)
-                        {
-                            pbox2_right = true;
-                            path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-                        }
-
-                        pictureBox1.Invalidate();
-                        pictureBox2.Invalidate();
-                    }
-                    catch (Exception err)
-                    {
-                        elog.Log(err.TargetSite.ToString(), err.Message);
-                        //MessageBox.Show(err.Message);
-                    }
-                }
-        */
-        //===================================================================================================================
-        //-------------------------------------------PictureBox OnPaint Handlers---------------------------------------------
-        //===================================================================================================================
-        /*
-                private void pictureBox1_Paint(object sender, PaintEventArgs e)
-                {
-                    try
-                    {
-                        if (pictureBox1.Image != null)
-                        {
-                            int size = 90;
-                            int offset = size / 2;
-                            float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                            int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                            int height_offset = (pictureBox1.Height - expected_height) / 2;
-
-                            if (pbox1_left)
-                            {
-                                e.Graphics.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
-                            }
-
-                            if (pbox1_right)
-                            {
-                                e.Graphics.FillPath(brush, path);
-                            }
-
-                            if (pbox2_left)
-                            {
-                                GraphicsPath temp_path = new GraphicsPath();
-                                temp_path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-
-                                e.Graphics.ExcludeClip(new Region(temp_path));
-                                e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                            }
-
-                            if (pbox2_right)
-                            {
-                                e.Graphics.SetClip(path, CombineMode.Exclude);
-                                e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                            }
-                        }
-                    }
-                    catch (Exception err)
-                    {
-                        elog.Log(err.TargetSite.ToString(), err.Message);
-                        //MessageBox.Show(err.Message);
-                    }
-
-                }
-        */
-        //===================================================================================================================
-        //-------------------------------------------PictureBox OnPaint Handlers---------------------------------------------
-        //===================================================================================================================
-        /*
-                private void pictureBox2_Paint(object sender, PaintEventArgs e)
-                {
-                    try
-                    {
-                        if (pictureBox2.Image != null)
-                        {
-                            int size = 90;
-                            int offset = size / 2;
-                            float image_ratio = ((float)pictureBox1.Image.Width / (float)pictureBox1.Image.Height);
-                            int expected_height = (int)((float)pictureBox1.Width / image_ratio);
-                            int height_offset = (pictureBox1.Height - expected_height) / 2;
-
-                            if (pbox2_left)
-                            {
-                                e.Graphics.FillEllipse(brush, mouse_x - offset, mouse_y - offset, size, size);
-                            }
-
-                            if (pbox2_right)
-                            {
-                                e.Graphics.FillPath(brush, path);
-                            }
-
-                            if (pbox1_left)
-                            {
-                                GraphicsPath temp_path = new GraphicsPath();
-                                temp_path.AddEllipse(mouse_x - offset, mouse_y - offset, size, size);
-
-                                e.Graphics.ExcludeClip(new Region(temp_path));
-                                e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                            }
-
-                            if (pbox1_right)
-                            {
-                                e.Graphics.SetClip(path, CombineMode.Exclude);
-                                e.Graphics.FillRectangle(brush, 0, height_offset, pictureBox1.Width, expected_height);
-                            }
-
-                            //PictureBox2 is the last to be drawn, therefore the click bools can be reset
-                            pbox1_left = false;
-                            pbox2_left = false;
-                            pbox1_right = false;
-                            pbox2_right = false;
-
-                        }
-                    }
-                    catch (Exception err)
-                    {
-                        elog.Log(err.TargetSite.ToString(), err.Message);
-                        //MessageBox.Show(err.Message);
-                    }
-                }
-        */
-        //===================================================================================================================
-        //------------------------------------------------Mouse Click Up-----------------------------------------------------
-        //===================================================================================================================
-        /*
-                private void pictureBox_MouseUp(object sender, MouseEventArgs e)
-                {
-                    try
-                    {
-                        //Clear screen of drawn markers
-                        if (e.Button == MouseButtons.Left)
-                        {
-                            pictureBox1.Refresh();
-                            pictureBox2.Refresh();
-                            path.Reset();
-                        }
-                    }
-                    catch (Exception err)
-                    {
-                        elog.Log(err.TargetSite.ToString(), err.Message);
-                        //MessageBox.Show(err.Message);
-                    }
-                }
-        */
         //===================================================================================================================
         //-------------------------------------------Select Algorithms Clicked-----------------------------------------------
         //===================================================================================================================
@@ -1355,6 +1145,9 @@ namespace Computer_Vision_Toolkit
         }
 
         
+
+
+
 
 
 
